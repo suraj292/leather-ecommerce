@@ -76,6 +76,7 @@
         </div>
     </div>
 
+    {{--    display avilable colors of product      --}}
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
@@ -93,7 +94,7 @@
                         @foreach($product->product_all_img as $color)
                             <tr>
                                 <td>
-                                    <div style="width: 40px; height: 40px; background-color: {{ $color->product_color }}; border-radius: 6px;"></div>
+                                    <img src="{{ asset('storage/color_image/'.$color->product_color) }}" >
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-inverse-info btn-icon" wire:click="getProductColorId({{$color->id}})">

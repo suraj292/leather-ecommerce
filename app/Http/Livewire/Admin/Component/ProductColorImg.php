@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Component;
 use App\Models\product_color_image;
 use App\Models\select_product_color;
 use Livewire\Component;
+use Intervention\Image\Facades\Image;
 use Livewire\WithFileUploads;
 
 class ProductColorImg extends Component
@@ -26,24 +27,34 @@ class ProductColorImg extends Component
             'productColors' => 'required',
             'newImg1' => 'required|image|max:1024',
             'newImg2' => 'required|image|max:1024',
-            'newImg3' => 'image|max:1024|nullable',
-            'newImg4' => 'image|max:1024|nullable',
-            'newImg5' => 'image|max:1024|nullable',
+            'newImg3' => 'required|image|max:1024',
+            'newImg4' => 'required|image|max:1024',
+            'newImg5' => 'required|image|max:1024',
         ]);
         if (!is_null($this->newImg1)){
-            $this->newImg1->store('public/product');
+//            $this->newImg1->store('public/product');
+            $img = Image::make($this->newImg1->path())->resize(320, 409);
+            $img->save('storage/product/'.$this->newImg1->hashName());
         }
         if (!is_null($this->newImg2)){
-            $this->newImg2->store('public/product');
+//            $this->newImg2->store('public/product');
+            $img = Image::make($this->newImg2->path())->resize(320, 409);
+            $img->save('storage/product/'.$this->newImg2->hashName());
         }
         if (!is_null($this->newImg3)){
-            $this->newImg3->store('public/product');
+//            $this->newImg3->store('public/product');
+            $img = Image::make($this->newImg3->path())->resize(320, 409);
+            $img->save('storage/product/'.$this->newImg3->hashName());
         }
         if (!is_null($this->newImg4)){
-            $this->newImg4->store('public/product');
+//            $this->newImg4->store('public/product');
+            $img = Image::make($this->newImg4->path())->resize(320, 409);
+            $img->save('storage/product/'.$this->newImg4->hashName());
         }
         if (!is_null($this->newImg5)){
-            $this->newImg5->store('public/product');
+//            $this->newImg5->store('public/product');
+            $img = Image::make($this->newImg5->path())->resize(320, 409);
+            $img->save('storage/product/'.$this->newImg5->hashName());
         }
         $imgArray = [
             $this->newImg1,

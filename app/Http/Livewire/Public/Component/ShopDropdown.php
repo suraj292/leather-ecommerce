@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Public\Component;
 
 use App\Models\product_category;
 use App\Models\sub_category;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class ShopDropdown extends Component
@@ -15,10 +16,10 @@ class ShopDropdown extends Component
     }
     public function mount(){
         $this->categories = product_category::with('sub_category')->get();
-//        $y = product_category::with('sub_category')->get();
-//        foreach ($y as $x){
-//            echo $x->product_category;
-//            echo $x->sub_category;
-//        }
+    }
+
+    public function dropdownSubCategory($id)
+    {
+        $this->emit('product_category', $id);
     }
 }

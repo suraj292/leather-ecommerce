@@ -2,18 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 //      PUBLIC
 Route::get('/', \App\Http\Livewire\Public\Home::class)->name('home');
+Route::get('products/{category?}', App\Http\Livewire\Public\Products::class)->name('products');
+Route::get('product/{slug?}', App\Http\Livewire\Public\ProductDetail::class)->name('product_details');
+//Route::get('register', App\Http\Livewire\Public\Register::class)->middleware('guest')->name('register');
 
 //      ADMIN
 Route::get('admin', App\Http\Livewire\Admin\Login::class)->name('admin_login')->middleware('admin');
@@ -27,7 +20,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['R_admin']], function (){
     Route::group(['prefix'=>'product'], function (){
         Route::get('category', App\Http\Livewire\Admin\Component\ProductCategory::class)->name('product_category');
         Route::get('sub-category', App\Http\Livewire\Admin\Component\SubCategory::class)->name('sub_category');
-        Route::get('/', \App\Http\Livewire\Admin\Component\Products::class)->name('products');
+        Route::get('/', App\Http\Livewire\Admin\Component\Products::class)->name('admin.products');
         Route::get('select_color', App\Http\Livewire\Admin\Component\SelectColor::class)->name('admin.color');
     });
 

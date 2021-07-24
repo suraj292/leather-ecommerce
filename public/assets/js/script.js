@@ -57,7 +57,7 @@
     });
 
 
-    /*=====================  
+    /*=====================
      02.Tap on Top
      ==========================*/
     $(window).on('scroll', function () {
@@ -1179,15 +1179,15 @@
     $('.product-slick').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: true,
+        arrows: false,
         fade: true,
         asNavFor: '.slider-nav'
     });
 
     $('.slider-nav').slick({
         vertical: false,
-        slidesToShow: 3,
-        slidesToScroll: 1,
+        slidesToShow: 5,
+        // slidesToScroll: 1,
         asNavFor: '.product-slick',
         arrows: false,
         dots: false,

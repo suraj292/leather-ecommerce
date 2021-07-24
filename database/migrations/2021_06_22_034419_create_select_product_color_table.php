@@ -15,7 +15,8 @@ class CreateSelectProductColorTable extends Migration
     {
         Schema::create('select_product_color', function (Blueprint $table) {
             $table->id();
-            $table->string('color');
+            $table->string('color_name');
+            $table->string('color_image');
         });
     }
 

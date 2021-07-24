@@ -26,25 +26,26 @@
                         </div>
                     </div>
                     @endforeach
-                        @if($imgDiv == true)
-                            <div class="row mb-2 pb-2" style="border-bottom: #a0a0a04a 1px solid;">
-                                <div class="col-6 d-flex align-items-center">
-                                    <div class="form-group container">
-                                        <label for="newImage">Image : 1</label>
-                                        <input type="file" class="form-control-file" id="newImage" wire:model="newImage">
-                                        @error('newImage') <p class="text-danger mt-3">{{ $message }}</p> @enderror
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    @if ($newImage)
-                                        <img src="{{ $newImage->temporaryUrl() }}" alt="img" class="img-thumbnail" width="100px">
-                                    @else
-                                        <img src="{{ asset('assets\images\test\empty.jpg') }}" alt="img" class="img-thumbnail" width="100px">
-                                    @endif
+
+                    @if($imgDiv == true)
+                        <div class="row mb-2 pb-2" style="border-bottom: #a0a0a04a 1px solid;">
+                            <div class="col-6 d-flex align-items-center">
+                                <div class="form-group container">
+                                    <label for="newImage">Image :</label>
+                                    <input type="file" class="form-control-file" id="newImage" wire:model="newImage">
+                                    @error('newImage') <p class="text-danger mt-3">{{ $message }}</p> @enderror
                                 </div>
                             </div>
-                        @endif
-                    @if($imgDiv == false)
+                            <div class="col-6">
+                                @if ($newImage)
+                                    <img src="{{ $newImage->temporaryUrl() }}" alt="img" class="img-thumbnail" width="100px">
+                                @else
+                                    <img src="{{ asset('assets\images\test\empty.jpg') }}" alt="img" class="img-thumbnail" width="100px">
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+                    @if(count($images) < 5 && $imgDiv == false)
                         <button class="btn btn-gradient-success" wire:click.prevent="addImgDiv">+ Add Image</button>
                     @endif
 

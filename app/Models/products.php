@@ -20,4 +20,8 @@ class products extends Model
     public function product_all_img(){
         return $this->hasMany(product_color_image::class, 'product_id', 'id');
     }
+    public function category(){
+        return $this->hasOne(product_category::class, 'id', 'product_category_id');
+    }
+
 }

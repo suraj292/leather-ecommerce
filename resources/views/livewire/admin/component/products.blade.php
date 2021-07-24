@@ -52,7 +52,7 @@
 
                         @if(!is_null($selectedSubCategory))
                             <div class="col-12 text-center">
-                                <button type="button" class="btn btn-primary btn-fw w-75" @click="isOpen = !isOpen">+ Add Product Sub-Category</button>
+                                <button type="button" class="btn btn-primary btn-fw w-75" @click="isOpen = !isOpen">+ Add Product</button>
                             </div>
 
                             <table class="table table-hover">
@@ -93,14 +93,17 @@
                 </div>
             </div>
 
+            {{--    for editing product detail and color, Images    --}}
             @if(!is_null($editProductId))
             <livewire:admin.component.edit-product :editProductId="$editProductId" />
             @endif
 
+            {{--  1. Create new product (details Only)  --}}
             @if(is_null($productId))
                 @include('partial.admin.create_product_detail')
             @endif
 
+            {{--  2. Add Color name and Image of new Product Detail  --}}
             @if(!is_null($productId))
             <livewire:admin.component.product-color-img  :productId="$productId"/>
             @endif
@@ -109,3 +112,9 @@
 
     </div>
 </div>
+@section('style')
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}">
+@endsection
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+@endsection

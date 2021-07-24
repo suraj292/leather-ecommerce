@@ -64,7 +64,7 @@
                             <li class="nav-item"> <a class="nav-link" href="{{route('product_category')}}">Category</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{route('sub_category')}}">Sub Category</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{route('admin.color')}}">Colors</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{route('products')}}">Products</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('admin.products')}}">Products</a></li>
                         </ul>
                     </div>
                 </li>

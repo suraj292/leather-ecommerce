@@ -34,6 +34,7 @@ class EditProduct extends Component
 //        $this->selectedColor = product_color_image::find(1);
     }
     public function getProductColorId($id){
+        // this is for editing images of color
         $colorImgTable = product_color_image::find($id);
         $this->selectedColor = $colorImgTable->product_color;
         $this->images = explode(',', $colorImgTable->images);
@@ -70,6 +71,7 @@ class EditProduct extends Component
 
     public function productNewImg()
     {
+        $this->validate(['newImage'=>'required|dimensions:min_width=50,min_height=50,max_width=500,max_height=500']);
         $this->newImage->store('public/product');
         array_push($this->images, $this->newImage->hashName());
         $img = implode(',', $this->images);
@@ -102,6 +104,7 @@ class EditProduct extends Component
     }
 
     public function deleteColorImg($id){
+        //deleting color with there all 5 Images
         $x = product_color_image::find($id);
         $img = explode(',', $x->images);
         foreach ($img as $image){

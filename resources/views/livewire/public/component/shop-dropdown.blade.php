@@ -1,10 +1,10 @@
 @foreach($categories as $category)
     <li>
-        <a href="">{{$category->product_category}}</a>
+        <a href="{{ route('products', $category->product_category) }}">{{$category->product_category}}</a>
         @if($category->sub_category->count() > 0)
         <ul>
             @foreach($category->sub_category as $subcategory)
-            <li><a href="#">{{$subcategory->sub_category}}</a></li>
+            <li><a wire:click="$emit('product_category', {{$subcategory->id}})">{{$subcategory->sub_category}}</a></li>
             @endforeach
         </ul>
         @endif

@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
-                   <img src="{{asset('admin_assets/images/sample/collection_banner.PNG')}}" width="100%">
+                   <img src="{{asset('assets/images/test/collaction_banner.PNG')}}" width="100%">
                 </div>
             </div>
         </div>

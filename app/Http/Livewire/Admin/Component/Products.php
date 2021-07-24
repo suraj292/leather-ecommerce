@@ -24,11 +24,16 @@ class Products extends Component
     }
     public function updatedSelectedCategory($selectedCategory){
         $this->subCategories = sub_category::where('product_category_id', $selectedCategory)->get();
+        $this->selectedSubCategory = null;
+        $this->editProductId = null;
+        $this->productId = null;
     }
     public function updatedSelectedSubCategory($selectedSubCategory){
         $this->products = \App\Models\products::with('details', 'product_color_img')
             ->where('sub_category_id', $selectedSubCategory)
             ->get();
+        $this->editProductId = null;
+        $this->productId = null;
     }
     public function productDetails(){
         $this->validate([

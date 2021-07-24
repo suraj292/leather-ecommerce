@@ -387,7 +387,7 @@
     <div class="category-bg onerow-cat">
         <div class="p-5 text-center row bg-white">
             <div class="col-md-3">
-                <img src="assets/images/test/profile.jpeg" alt="profile" style="width: 74%; height: 90%;" class=" shadow-lg">
+                <img src="assets/images/test/profile.jpeg" alt="profile" style="width: 92%; height: 90%;" class=" shadow-lg">
             </div>
 
             <div class="col-md-9">

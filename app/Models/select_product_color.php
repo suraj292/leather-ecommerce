@@ -10,5 +10,5 @@ class select_product_color extends Model
     use HasFactory;
     protected $table = "select_product_color";
     public $timestamps = false;
-    protected $fillable = ['color'];
+    protected $fillable = ['color_name', 'color_image'];
 }
