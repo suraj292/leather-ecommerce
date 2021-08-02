@@ -15,10 +15,13 @@
             </tr>
         </tbody>
     </table>
-
-
-
     <hr>
+
+    <p>
+        id: {{ $abc }} <br>
+        code: {{ $def }}
+    </p>
+
 </div>
 @section('style')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">

@@ -200,11 +200,7 @@
 </header>
 <!-- header end -->
 
-    @if(url()->current() == 'http://127.0.0.1:8000/register')
-        @yield('content')
-    @else
         {{$slot}}
-    @endif
 
 <!-- footer start -->
 <footer class="footer-light">

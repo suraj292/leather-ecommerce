@@ -57,32 +57,47 @@
                     <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
                         <span class="menu-title">Products</span>
                         <i class="menu-arrow"></i>
-                        <i class="mdi mdi-arrange-bring-forward menu-icon"></i>
+                        <i class="mdi mdi-package-variant menu-icon"></i>
                     </a>
                     <div class="collapse" id="products">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item"> <a class="nav-link" href="{{route('product_category')}}">Category</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{route('sub_category')}}">Sub Category</a></li>
-                            <li class="nav-item"> <a class="nav-link" href="{{route('admin.color')}}">Colors</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('admin.color')}}">Product Colors</a></li>
                             <li class="nav-item"> <a class="nav-link" href="{{route('admin.products')}}">Products</a></li>
                         </ul>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
-                        <span class="menu-title">Sample Pages</span>
+                    <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="users">
+                        <span class="menu-title">Users</span>
                         <i class="menu-arrow"></i>
-                        <i class="mdi mdi-medical-bag menu-icon"></i>
+                        <i class="mdi mdi-account-multiple menu-icon"></i>
                     </a>
-                    <div class="collapse" id="general-pages">
+                    <div class="collapse" id="users">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('product_category')}}">Verified</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('sub_category')}}">Unverified</a></li>
                         </ul>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="menu-title">Sale / Offer</span>
+                        <i class="mdi mdi-sale menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('coupon') }}">
+                        <span class="menu-title">Coupons</span>
+                        <i class="mdi mdi-tag-multiple menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="menu-title">Orders</span>
+                        <i class="mdi mdi-clipboard-text menu-icon"></i>
+                    </a>
                 </li>
                 <li class="nav-item sidebar-actions">
                   <span class="nav-link">

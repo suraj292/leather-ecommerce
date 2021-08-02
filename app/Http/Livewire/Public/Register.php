@@ -2,7 +2,13 @@
 
 namespace App\Http\Livewire\Public;
 
-use App\Actions\Fortify\PasswordValidationRules;
+use App\Jobs\newUserEmailVerification;
+use App\Models\user_verification;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
 use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +17,6 @@ use Illuminate\Support\Facades\Hash;
 
 class Register extends Component
 {
-    use PasswordValidationRules;
     public $register = [
         'fullName'=>'',
         'email'=>'',
@@ -22,7 +27,7 @@ class Register extends Component
     protected $rules = [
         'register.fullName' => 'required|max:50',
         'register.email' => ['required','email','unique:Users,email'],
-        'register.mobile' => 'required|integer',
+//        'register.mobile' => 'required|integer',
         'register.password' => 'required|min:8',
         'register.confirmPassword' => 'required|same:register.password',
     ];
@@ -53,15 +58,40 @@ class Register extends Component
     public function register()
     {
         $this->validate();
-        User::create([
+
+        // saving new user with virification link & mobile otp
+        $verification = new user_verification([
+            'email_verification_link' => Str::random(40),
+            'mobile_otp' => random_int(100000, 999999),
+        ]);
+        $newUser = User::create([
             'name' => $this->register['fullName'],
             'email' => $this->register['email'],
             'mobile' => $this->register['mobile'],
-            'social_network' => 'Email',
-            'password' => Hash::make($this->register['password']),
-        ]);
-        $this->redirect('email/verification-notification');
-//        session()->flash('verifyEmail', 'Email verification Link has been sent to your Email: '.$this->register['email']);
+            'social_network' => 'EMAIL',
+            'password' => $this->register['password'],
+        ])->user_verification()->save($verification);
+
+        $userID = Crypt::encrypt($newUser->id);
+
+        //sending email verification link of new user
+        //data to send on email
+        $data = [
+            'name'=>$this->register['fullName'],
+            'userId'=>$userID,
+            'link'=>$verification->email_verification_link,
+            'email'=>$this->register['email'],
+        ];
+        //$userMailID = $this->register['email'];
+        newUserEmailVerification::dispatch($data);
+
+        session()->flash('verifyEmail', 'Email verification Link has been sent to your Email: '.$this->register['email']);
+    }
+
+    public function hgoogle()
+    {
+        Socialite::driver('google')->redirect();
+//        dd($x);
     }
 
 }

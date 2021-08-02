@@ -9088,7 +9088,7 @@ header.stickycls {
             transform: translateX(-50%); }
   .pixelstrap a .sub-arrow::before {
     content: "\f107";
-    font-family: 'Font Awesome\ 5 Free';
+    font-family: 'FontAwesome';
     position: absolute; }
   .pixelstrap ul {
     border: none;

@@ -26,7 +26,11 @@
     <section class="register-page section-b-space">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                @if(session()->has('verifyEmail'))
+                    <p class="alert-success p-2 rounded">
+                        {{ session('verifyEmail') }}
+                    </p>
+                @else
                     <h3>create account</h3>
                     <div class="theme-card">
 
@@ -35,11 +39,6 @@
                                 <div class="col-md-12">
                                     <label for="fname">Full Name <span class="text-danger"> * </span></label>
                                     <input type="text" class="form-control" id="fname" placeholder="Full Name" wire:model.debounce.500ms="register.fullName">
-{{--                                    @error('register.fname') <p class="text-danger" style="margin-top: -20px;">{{ $message }}</p> @enderror--}}
-{{--                                </div>--}}
-{{--                                <div class="col-md-6">--}}
-{{--                                    <label for="lname">Last Name</label>--}}
-{{--                                    <input type="text" class="form-control" id="lname" placeholder="Last Name" wire:model.debounce.500ms="register.lname">--}}
                                     @error('register.fullName') <p class="text-danger" style="margin-top: -20px;">{{ $message }}</p> @enderror
                                 </div>
                             </div>
@@ -77,44 +76,41 @@
                         <div class="container">
                             <div class="row text-center">
 
-                                <div class="col-md-4">
-                                    <a class="btn btn-social btn-lg btn-google rounded m-3">
+                                <div class="col-md-3">
+                                    <a href="{{ route('google_login') }}" class="btn btn-social btn-lg btn-google rounded m-3">
                                         <i class="fa fa-google"></i>
                                         Google
                                     </a>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <a class="btn btn-social btn-lg btn-facebook rounded m-3">
                                         <i class="fa fa-facebook"></i>
                                         Facebook
                                     </a>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <a class="btn btn-social btn-lg btn-twitter rounded m-3">
                                         <i class="fa fa-twitter"></i>
                                         Twitter
                                     </a>
                                 </div>
 
+                                <div class="col-md-3">
+                                    <a class="btn btn-social btn-lg btn-linkedin rounded m-3">
+                                        <i class="fa fa-linkedin"></i>
+                                        LinkedIn
+                                    </a>
+                                </div>
 
                             </div>
                         </div>
-
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </section>
-    <!--Section ends-->
-{{--        @else--}}
-{{--            <section class="register-page section-b-space">--}}
-{{--                <div class="container">--}}
-{{--                    <p class="alert-success h5 p-2 rounded">{{session('verifyEmail')}}</p>--}}
-{{--                </div>--}}
-{{--            </section>--}}
-{{--        @endif--}}
 </div>
 @section('style')
     {{--    <link href="{{ asset('assets/css/docs.css') }}" rel="stylesheet" >--}}

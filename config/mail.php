@@ -32,7 +32,6 @@ return [
     |            "postmark", "log", "array"
     |
     */
-
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
@@ -44,6 +43,7 @@ return [
             'timeout' => null,
             'auth_mode' => null,
         ],
+
 
         'ses' => [
             'transport' => 'ses',
