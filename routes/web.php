@@ -14,7 +14,15 @@ Route::group(['prefix'=>'login'], function (){
     //  GOOGLE
     Route::get('google', [App\Http\Controllers\login::class, 'google'])->name('google_login');
     Route::get('google/callback', [App\Http\Controllers\login::class, 'googleCallback']);
-
+    //  FACEBOOK
+    Route::get('facebook', [App\Http\Controllers\login::class, 'facebook'])->name('facebook_login');
+    Route::get('facebook/callback', [App\Http\Controllers\login::class, 'facebookCallback']);
+    //  TWITTER
+    Route::get('twitter', [App\Http\Controllers\login::class, 'twitter'])->name('twitter_login');
+    Route::get('twitter/callback', [App\Http\Controllers\login::class, 'twitterCallback']);
+    //  LINKEDIN
+    Route::get('linkedin', [App\Http\Controllers\login::class, 'linkedin'])->name('linkedin_login');
+    Route::get('linkedin/callback', [App\Http\Controllers\login::class, 'linkedinCallback']);
 });
 
 //      ADMIN

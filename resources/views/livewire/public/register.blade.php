@@ -84,21 +84,21 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <a class="btn btn-social btn-lg btn-facebook rounded m-3">
+                                    <a href="{{ route('facebook_login') }}" class="btn btn-social btn-lg btn-facebook rounded m-3">
                                         <i class="fa fa-facebook"></i>
                                         Facebook
                                     </a>
                                 </div>
 
                                 <div class="col-md-3">
-                                    <a class="btn btn-social btn-lg btn-twitter rounded m-3">
+                                    <a href="{{-- route('twitter_login') --}}" class="btn btn-social btn-lg btn-twitter rounded m-3">
                                         <i class="fa fa-twitter"></i>
                                         Twitter
                                     </a>
                                 </div>
 
                                 <div class="col-md-3">
-                                    <a class="btn btn-social btn-lg btn-linkedin rounded m-3">
+                                    <a href="{{ route('linkedin_login') }}" class="btn btn-social btn-lg btn-linkedin rounded m-3">
                                         <i class="fa fa-linkedin"></i>
                                         LinkedIn
                                     </a>
