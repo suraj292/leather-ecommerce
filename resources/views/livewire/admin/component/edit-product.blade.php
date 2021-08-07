@@ -35,6 +35,17 @@
                             @error('editProductCareInstruction') <p class="text-danger mt-2">{{ $message }}</p> @enderror
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 col-form-label">Gender</label>
+                        <div class="col-sm-9">
+                            <select class="form-control form-control-lg" wire:model.lazy="editGender">
+                                <option selected value="none">None</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            @error('editGender') <p class="text-danger mt-2">{{ $message }}</p> @enderror
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Price</label>
                         <div class="col-sm-9">
@@ -69,7 +80,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                    <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>
 {{--                    <button class="btn btn-light" @click="isOpen = !isOpen">Cancel</button>--}}
                 </form>
             </div>
@@ -80,22 +91,27 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Product Colors</h4>
+                @if(session()->has('img_updated'))
+                <p class="alert-success p-2">{{ session('img_updated') }}</p>
+                @endif
+                <h4 class="card-title">Product Color & Stock</h4>
                 <form class="forms-sample">
                     <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Color</th>
+                            <th>Stock</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($product->product_all_img as $color)
+                        @foreach($oldImgStk as $color)
                             <tr>
                                 <td>
                                     <img src="{{ asset('storage/color_image/'.$color->product_color) }}" >
                                 </td>
+                                <td> {{ $color->stock }} </td>
                                 <td>
                                     <button type="button" class="btn btn-inverse-info btn-icon" wire:click="getProductColorId({{$color->id}})">
                                         <i class="mdi mdi-tooltip-edit"></i>
@@ -120,6 +136,8 @@
         <livewire:admin.component.product-color-img :productId="$addNewColor"/>
     @endif
 
-    @include('partial.admin.edit_product_images')
+    @if(!is_null($images))
+        @include('partial.admin.edit_product_images')
+    @endif
 
 </div>

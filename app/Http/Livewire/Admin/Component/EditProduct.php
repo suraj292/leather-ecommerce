@@ -12,16 +12,16 @@ class EditProduct extends Component
 {
     use WithFileUploads;
 
-    public $editProductId, $product, $images, $selectedColor, $productColorId, $imgDiv, $newImage, $addNewColor,
+    public $editProductId, $product, $images, $selectedColor, $productColorId, $imgDiv, $newImage, $addNewColor, $oldImgStk,
         $editProductTitle, $editProductDimension, $editProductDescription, $editProductCareInstruction, $editProductPrice, $editProductOfferPrice, $editProductReturn,
-        $editProductSale, $editProductDiscount;
+        $editProductSale, $editProductDiscount, $editStock;
     protected $listeners = ['productColorUpdated'];
     public function render()
     {
         return view('livewire.admin.component.edit-product');
     }
     public function mount(){
-        $this->product = \App\Models\products::with('details', 'product_all_img')->find($this->editProductId);
+        $this->product = \App\Models\products::with('details')->find($this->editProductId);
         $this->editProductTitle = $this->product->details->title;
         $this->editProductDimension = $this->product->details->dimension;
         $this->editProductDescription = $this->product->details->description;
@@ -31,7 +31,7 @@ class EditProduct extends Component
         $this->editProductReturn = $this->product->details->return;
         $this->editProductSale = $this->product->details->sale;
         $this->editProductDiscount = $this->product->details->discount;
-//        $this->selectedColor = product_color_image::find(1);
+        $this->oldImgStk = product_color_image::where('product_id', $this->editProductId)->get();
     }
     public function getProductColorId($id){
         // this is for editing images of color
@@ -39,7 +39,19 @@ class EditProduct extends Component
         $this->selectedColor = $colorImgTable->product_color;
         $this->images = explode(',', $colorImgTable->images);
         $this->productColorId = $id;
+        $this->editStock = $colorImgTable->stock;
+    }
 
+    public function stockInc()
+    {
+        $this->editStock++;
+    }
+
+    public function stockDec()
+    {
+        if (1 <= $this->editStock){
+            $this->editStock--;
+        }
     }
 
     public function editProductDetails()
@@ -71,17 +83,22 @@ class EditProduct extends Component
 
     public function productNewImg()
     {
-        $this->validate(['newImage'=>'required|dimensions:min_width=50,min_height=50,max_width=500,max_height=500']);
-        $this->newImage->store('public/product');
-        array_push($this->images, $this->newImage->hashName());
-        $img = implode(',', $this->images);
+//        $this->validate(['newImage'=>'dimensions:min_width=50,min_height=50,max_width=700,max_height=700']);
         $saveImg = product_color_image::find($this->productColorId);
-        $saveImg->update(['images'=> $img]);
+        if (!is_null($this->newImage)){
+            $this->newImage->store('public/product');
+            array_push($this->images, $this->newImage->hashName());
+            $img = implode(',', $this->images);
+            $saveImg->update(['images'=> $img, 'stock' => $this->editStock]);
+            $this->images = explode(',', $saveImg->images);
+        }else{
+            $saveImg->update(['stock' => $this->editStock]);
+        }
         $this->imgDiv = false;
         $this->newImage = null;
-
-        $this->images = explode(',', $saveImg->images);
-
+        $this->images = null;
+        $this->oldImgStk = product_color_image::where('product_id', $this->editProductId)->get();
+        session()->flash('img_updated', 'Images & Stock Updated.');
     }
 
     public function deleteImg($key)

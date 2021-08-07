@@ -22,6 +22,7 @@ class CreateProductDetailsTable extends Migration
             $table->char('care_instruction')->nullable();
             $table->string('price')->nullable();
             $table->string('offer_price')->nullable();
+            $table->string('gender')->nullable();
             $table->boolean('return')->nullable();
             $table->boolean('sale')->nullable();
             $table->boolean('discount')->nullable();

@@ -49,7 +49,6 @@
                                 </select>
                             </div>
 
-
                         @if(!is_null($selectedSubCategory))
                             <div class="col-12 text-center">
                                 <button type="button" class="btn btn-primary btn-fw w-75" @click="isOpen = !isOpen">+ Add Product</button>
@@ -75,7 +74,13 @@
                                             @endif
                                         </td>
                                         <td class="text-success text-uppercase"> {{$product->details->title}} </td>
-                                        <td> {{$product->details->price}} </td>
+                                        <td>
+                                            @if(!is_null($product->details->offer_price))
+                                                &#8377; {{$product->details->offer_price}}
+                                            @else
+                                                &#8377; {{$product->details->price}}
+                                            @endif
+                                        </td>
                                         <td>
                                             <button type="button" class="btn btn-inverse-info btn-icon" wire:click="getEditProduct({{$product->id}})">
                                                 <i class="mdi mdi-tooltip-edit"></i>

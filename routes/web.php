@@ -10,6 +10,8 @@ Route::get('register', App\Http\Livewire\Public\Register::class)->middleware('gu
 Route::get('verification/{user}/{code}', App\Http\Livewire\Public\Component\EmailVerify::class)->name('email_verify');
 Route::get('sendEmailVerification', App\Http\Livewire\Public\Component\ResendEmailLink::class)->name('send_email_verify');
 
+Route::get('login', App\Http\Livewire\Public\Login::class)->name('login');
+
 Route::group(['prefix'=>'login'], function (){
     //  GOOGLE
     Route::get('google', [App\Http\Controllers\login::class, 'google'])->name('google_login');
@@ -44,4 +46,4 @@ Route::group(['prefix'=>'admin', 'middleware'=>['R_admin']], function (){
 
 });
 //      Test
-Route::get('test/', App\Http\Livewire\Test::class);
+Route::get('test', App\Http\Livewire\Test::class);

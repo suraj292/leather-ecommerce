@@ -17,10 +17,9 @@
     </table>
     <hr>
 
-    <p>
-        id: {{ $abc }} <br>
-        code: {{ $def }}
-    </p>
+    <button wire:click="increase"> + </button>
+    <h2> {{ $c }} </h2>
+    <button wire:click="decrease"> - </button>
 
 </div>
 @section('style')

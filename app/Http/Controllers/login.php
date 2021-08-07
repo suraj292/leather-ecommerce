@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Auth\SessionGuard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 use League\OAuth1\Client\Server\Twitter;
 
@@ -17,21 +19,27 @@ class login extends Controller
 
     public function googleCallback()
     {
-        $user = Socialite::driver('google')->user();
+        $user = Socialite::driver('google')->stateless()->user();
 //        dd($user);
         $findUser = User::where('email', $user->email)->first();
         if ($findUser){
-            Auth::login($findUser);
+            Auth::attempt(['email'=>$findUser->email, 'password'=>'shopnow'], false);
+            //dd(Hash::check('shopnow', $findUser->password));
+            //dd($x);
+            return redirect(route('register'));
         }else{
             $newUser = User::create([
                'name' => $user->name,
                'avatar' => $user->avatar,
                'email' => $user->email,
+               'password' => Hash::make('shopnow'),
                'social_network' => 'GOOGLE',
             ]);
             Auth::login($newUser);
+            //Auth::login($newUser);
+            //$newUser->session()->regenerate();
         }
-        return redirect(route('home'));
+        //return redirect(route('register'));
     }
 
     public function facebook()

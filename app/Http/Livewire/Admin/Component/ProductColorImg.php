@@ -13,7 +13,7 @@ class ProductColorImg extends Component
     use WithFileUploads;
 
     public $colors, $productId, $productColors, $imgName, $product,
-            $newImg1, $newImg2, $newImg3, $newImg4, $newImg5;
+            $newImg1, $newImg2, $newImg3, $newImg4, $newImg5, $stockQuantity=1;
 
     public function render()
     {
@@ -25,11 +25,12 @@ class ProductColorImg extends Component
     public function productColorImg(){
         $this->validate([
             'productColors' => 'required',
-            'newImg1' => 'required|image|max:1024',
-            'newImg2' => 'required|image|max:1024',
-            'newImg3' => 'required|image|max:1024',
-            'newImg4' => 'required|image|max:1024',
-            'newImg5' => 'required|image|max:1024',
+//            'stockQuantity' => '',
+            'newImg1' => 'required|image|max:2564',
+            'newImg2' => 'required|image|max:2564',
+            'newImg3' => 'required|image|max:2564',
+            'newImg4' => 'required|image|max:2564',
+            'newImg5' => 'required|image|max:2564',
         ]);
         if (!is_null($this->newImg1)){
 //            $this->newImg1->store('public/product');
@@ -71,11 +72,13 @@ class ProductColorImg extends Component
         $create_color_img = product_color_image::create([
            'product_id'=>$this->productId,
            'product_color'=>$this->productColors,
+           'stock'=>$this->stockQuantity,
            'images'=> $this->imgName,
         ]);
         if ($create_color_img){
             session()->flash('color_img', 'Color & Images has been added.');
             $this->productColors = null;
+            $this->stockQuantity = 1;
             $this->newImg1 = null;
             $this->newImg2 = null;
             $this->newImg3 = null;
@@ -87,5 +90,17 @@ class ProductColorImg extends Component
     }
     public function add_more_color(){
         session()->forget('color_img');
+    }
+
+    public function stockDec()
+    {
+        if ($this->stockQuantity >= 1){
+            $this->stockQuantity--;
+        }
+    }
+
+    public function stockInc()
+    {
+        $this->stockQuantity++;
     }
 }

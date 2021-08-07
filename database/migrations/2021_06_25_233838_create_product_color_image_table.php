@@ -17,6 +17,7 @@ class CreateProductColorImageTable extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             $table->string('product_color');
+            $table->string('stock');
             $table->longText('images');
         });
     }

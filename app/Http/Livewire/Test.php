@@ -6,8 +6,10 @@ use App\Models\product_category;
 use App\Models\product_color;
 use App\Models\product_details;
 use App\Models\products;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Livewire\Component;
@@ -17,7 +19,7 @@ class Test extends Component
 {
     use WithFileUploads;
 
-    public $test, $image;
+    public $test, $c=1;
     public function render()
     {
         return view('livewire.test')->layout('layouts.admin');
@@ -35,5 +37,32 @@ class Test extends Component
 //
 //        dd($this->test);
 
+        //Session::put('test', 'cool ..');
+
+//        if (Session()->has('test')){
+//            dd(Session::get('test'));
+//        }else{
+//            dd('failed');
+//        }
+
+
+        if (Session::has('key')){
+            $this->c = Session::get('key');
+        }
+
+    }
+
+    public function increase()
+    {
+        $this->c++;
+        Session::put('key', $this->c);
+        Session::save();
+    }
+
+    public function decrease()
+    {
+        $this->c--;
+        Session::put('key', $this->c);
+        Session::save();
     }
 }

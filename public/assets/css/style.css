@@ -9123,7 +9123,7 @@ header.stickycls {
           transition: 0.5s ease; }
       .pixelstrap ul a .sub-arrow:before {
         content: "\f105";
-        font-family: 'Font Awesome\ 5 Free';
+        font-family: 'FontAwesome';
         position: absolute; }
     .pixelstrap ul li {
       border: 0; }

@@ -11,7 +11,7 @@
             <form class="forms-sample" wire:submit.prevent="productColorImg">
                 <!-- select color -->
                 <div class="form-group">
-                    <select class="selectpicker" wire:model.defer="productColors">
+                    <select class="selectpicker" wire:model.lazy="productColors">
                         <option selected> Select below </option>
                         @foreach($colors as $color)
                         <option
@@ -20,11 +20,23 @@
                         ></option>
                         @endforeach
                     </select>
-                    <script>
-                        $('.selectpicker').selectpicker();
-                    </script>
+
                     @error('productColors') <p class="text-danger mt-3">{{ $message }}</p> @enderror
                 </div>
+                <script>
+                    $('.selectpicker').selectpicker();
+                </script>
+
+                <style>
+                    .btn-stock:hover{background: #efefef;}
+                </style>
+                <div class="input-group my-2">
+                    <label class="mr-2">Stock :</label>
+                    <button class="btn btn-stock" type="button" style="border: 1px #0000003b solid; width: 50px;" wire:click="stockDec"><i class="mdi mdi-minus"></i></button>
+                    <input type="text" class="text-center" maxlength="3" value="{{ $stockQuantity }}" style="border: 1px #0000003b solid; width: 100px;">
+                    <button class="btn btn-stock" type="button" style="border: 1px #0000003b solid; width: 50px;" wire:click="stockInc"><i class="mdi mdi-plus"></i></button>
+                </div>
+
                 <!-- end select color -->
                 <div class="row mb-2 pb-2" style="border-bottom: #a0a0a04a 1px solid;">
                     <div class="col-6 d-flex align-items-center">

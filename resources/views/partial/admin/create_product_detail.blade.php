@@ -31,6 +31,17 @@
                         @error('productCareInstruction') <p class="text-danger mt-2">{{ $message }}</p> @enderror
                     </div>
                 </div>
+                <div class="row form-group">
+                    <label class="col-sm-3 col-form-label">Gender</label>
+                    <div class="col-sm-9">
+                        <select class="form-control form-control-lg" wire:model.lazy="gender">
+                            <option selected value="none">None</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        @error('gender') <p class="text-danger mt-2">{{ $message }}</p> @enderror
+                    </div>
+                </div>
                 <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Price</label>
                     <div class="col-sm-9">

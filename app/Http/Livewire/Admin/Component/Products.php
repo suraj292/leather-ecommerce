@@ -13,7 +13,7 @@ class Products extends Component
 {
     public $categories, $subCategories, $products,
         $selectedCategory, $selectedSubCategory,
-        $productTitle, $productDimension, $productDescription, $productCareInstruction, $productPrice, $productOfferPrice, $productReturn, $productSale, $productDiscount,
+        $productTitle, $productDimension, $productDescription, $productCareInstruction, $productPrice, $productOfferPrice, $productReturn, $productSale, $productDiscount, $gender,
         $productId, $editProductId;
     public function render()
     {
@@ -32,6 +32,7 @@ class Products extends Component
         $this->products = \App\Models\products::with('details', 'product_color_img')
             ->where('sub_category_id', $selectedSubCategory)
             ->get();
+
         $this->editProductId = null;
         $this->productId = null;
     }
@@ -41,8 +42,8 @@ class Products extends Component
             'productDimension' => 'max:100',
             'productDescription' => 'max:250',
             'productCareInstruction' => 'max:250',
-            'productPrice' => 'required',
-            'productOfferPrice' => '',
+            'productPrice' => 'required|integer',
+            'productOfferPrice' => 'integer',
         ]);
         $product_details = new product_details([
             'product_id'=>$this->selectedCategory,
@@ -50,13 +51,14 @@ class Products extends Component
             'dimension'=>$this->productDimension,
             'description'=>$this->productDescription,
             'care_instruction'=>$this->productCareInstruction,
+            'gender'=>$this->gender,
             'price'=>$this->productPrice,
             'offer_price'=>$this->productOfferPrice,
             'return'=>$this->productReturn,
             'sale'=>$this->productSale,
             'discount'=>$this->productDiscount,
         ]);
-        $x = \App\Models\products::create([
+        $product_created = \App\Models\products::create([
             'product_category_id' => $this->selectedCategory,
             'sub_category_id' => $this->selectedSubCategory,
         ])->details()->save($product_details);
@@ -65,8 +67,8 @@ class Products extends Component
             ->where('sub_category_id', $this->selectedSubCategory)
             ->get();
 
-        $this->productId = $x->id;
-        if ($x){
+        $this->productId = $product_created->id;
+        if ($product_created){
             session()->flash('product_detail', 'Product Detail has been saved.');
         }
     }
