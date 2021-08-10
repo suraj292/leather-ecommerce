@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\collection_link;
+use App\Models\collection_name;
 use App\Models\product_category;
 use App\Models\product_color;
 use App\Models\product_details;
@@ -45,11 +47,16 @@ class Test extends Component
 //            dd('failed');
 //        }
 
+//        if (Session::has('key')){
+//            $this->c = Session::get('key');
+//        }
 
-        if (Session::has('key')){
-            $this->c = Session::get('key');
-        }
 
+//        $this->test = collection_name::with('collectionLink')->get();
+
+        $this->test = collection_name::with('collectionLink.products')->get();
+
+//        dd($this->test);
     }
 
     public function increase()

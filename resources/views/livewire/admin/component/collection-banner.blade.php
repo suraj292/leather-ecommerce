@@ -85,7 +85,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Background Color</label>
-                                    <input type="text" class="form-control" placeholder="Enter Sub-Title" wire:model.debounce.500ms="editBgColor">
+                                    <input type="color" class="colorPick" title="Choose your color" wire:model.debounce.500ms="editBgColor">
+{{--                                    <input type="color" class="form-control colorPick" placeholder="Enter Sub-Title" wire:model.debounce.500ms="editBgColor">--}}
                                     @error('editBgColor') <p class="text-danger mt-2">{{ $message }}</p> @enderror
                                 </div>
                                 <div class="form-group">
@@ -121,9 +122,13 @@
                                 <input type="text" class="form-control" placeholder="Enter Button name" wire:model.debounce.500ms="newOffer">
                                 @error('newOffer') <p class="text-danger mt-2">{{ $message }}</p> @enderror
                             </div>
+                            <style>
+                                .colorPick{padding: 0; width: 60px; height: 50px; margin-left: 10px;}
+                            </style>
                             <div class="form-group">
                                 <label>Background Color</label>
-                                <input type="text" class="form-control" placeholder="Enter Sub-Title" wire:model.debounce.500ms="newBgColor">
+                                <input type="color" class="colorPick" title="Choose your color" wire:model.debounce.500ms="newBgColor">
+{{--                                <input type="color" class="form-control colorPick" wire:model.debounce.500ms="newBgColor">--}}
                                 @error('newBgColor') <p class="text-danger mt-2">{{ $message }}</p> @enderror
                             </div>
                             <div class="form-group">

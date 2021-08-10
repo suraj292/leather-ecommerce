@@ -82,6 +82,12 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('collection') }}">
+                        <span class="menu-title">Collections</span>
+                        <i class="mdi mdi-animation menu-icon"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">
                         <span class="menu-title">Sale / Offer</span>
                         <i class="mdi mdi-sale menu-icon"></i>

@@ -58,20 +58,15 @@
                                                                     </div>
                                                                     <div class="menu-content">
                                                                         <ul>
-                                                                            <li><a href="index.html">Newsletter</a>
-                                                                            </li>
-                                                                            <li><a href="index.html">exit<i
-                                                                                        class="ms-2 fa fa-bolt icon-trend"
-                                                                                        aria-hidden="true"></i></a>
-                                                                            </li>
-                                                                            <li><a href="christmas.html">christmas</a>
-                                                                            </li>
-                                                                            <li><a href="furniture-3.html">black
-                                                                                    friday</a></li>
-                                                                            <li><a href="fashion-4.html">cyber
-                                                                                    monday</a></li>
-                                                                            <li><a href="marketplace-demo-3.html">new
-                                                                                    year</a></li>
+                                                                            @foreach($collections as $collection)
+                                                                                <li>
+                                                                                    <a href="index.html">{{ $collection->name }}</a>
+                                                                                </li>
+                                                                            @endforeach
+{{--                                                                            <li><a href="index.html">exit<i--}}
+{{--                                                                                        class="ms-2 fa fa-bolt icon-trend"--}}
+{{--                                                                                        aria-hidden="true"></i></a>--}}
+{{--                                                                            </li>--}}
                                                                         </ul>
                                                                     </div>
                                                                 </div>

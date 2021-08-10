@@ -17,9 +17,31 @@
     </table>
     <hr>
 
-    <button wire:click="increase"> + </button>
-    <h2> {{ $c }} </h2>
-    <button wire:click="decrease"> - </button>
+{{--    @foreach($test as $collection)--}}
+{{--    <h4>--}}
+{{--        collection : {{ $collection->name }} <br>--}}
+{{--        @forelse($collection->collectionLink as $index => $product)--}}
+{{--            <br>product {{ $index + 1 }} : {{ $product->products->title }}--}}
+{{--            <br>price {{ $index + 1 }} : {{ $product->products->price }}--}}
+{{--            <br>--}}
+{{--        @empty--}}
+{{--            <br>No Products--}}
+{{--        @endforelse--}}
+{{--    </h4>--}}
+{{--    <hr>--}}
+{{--    @endforeach--}}
+
+    @foreach($test as $collection)
+        <h4>
+            collection : {{ $collection->name }}
+            @foreach($collection->collectionLink as $product)
+                <br>product : {{ $product->products->title }}
+                <br>price : {{ $product->products->price }}
+                <br>
+            @endforeach
+        </h4>
+        <hr>
+    @endforeach
 
 </div>
 @section('style')

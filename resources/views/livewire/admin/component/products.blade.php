@@ -75,7 +75,7 @@
                                         </td>
                                         <td class="text-success text-uppercase"> {{$product->details->title}} </td>
                                         <td>
-                                            @if(!is_null($product->details->offer_price))
+                                            @if($product->details->offer_price)
                                                 &#8377; {{$product->details->offer_price}}
                                             @else
                                                 &#8377; {{$product->details->price}}

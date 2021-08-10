@@ -31,6 +31,7 @@ Route::group(['prefix'=>'login'], function (){
 Route::get('admin', App\Http\Livewire\Admin\Login::class)->name('admin_login')->middleware('admin');
 Route::group(['prefix'=>'admin', 'middleware'=>['R_admin']], function (){
     Route::get('dashboard', App\Http\Livewire\Admin\Dashboard::class)->name('dashboard');
+    Route::get('collection', App\Http\Livewire\Admin\Collections::class)->name('collection');
 //    Route::get('home/{component?}', App\Http\Livewire\Admin\Home::class)->name('admin_home');
     Route::group(['prefix'=>'home'], function (){
         Route::get('slider', App\Http\Livewire\Admin\Component\Slides::class)->name('slider');

@@ -74,7 +74,8 @@
                                     <del style="color: orangered;">&#x20b9; {{$product->price}}</del>
                                 @else
                                     &#x20b9; {{$product->price}}
-                                @endif</h4>
+                                @endif
+                            </h4>
                             <div class="accordion" id="accordionExample">
 
                                 <div class="accordion-item">

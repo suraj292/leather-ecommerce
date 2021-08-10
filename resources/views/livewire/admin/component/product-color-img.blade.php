@@ -10,7 +10,7 @@
 
             <form class="forms-sample" wire:submit.prevent="productColorImg">
                 <!-- select color -->
-                <div class="form-group">
+                <div class="form-group" wire:ignore>
                     <select class="selectpicker" wire:model.lazy="productColors">
                         <option selected> Select below </option>
                         @foreach($colors as $color)
