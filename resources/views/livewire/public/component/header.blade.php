@@ -203,8 +203,13 @@
                             </div>
                             <div class="top-header">
                                 <ul class="header-dropdown">
-                                    <li class="mobile-wishlist"><a href="#">
-                                            <img src="{{asset('assets/images/jewellery/icon/heart.png')}}" alt=""> </a></li>
+
+                                    <li class="mobile-wishlist">
+                                        <a href="#">
+                                            <img src="{{asset('assets/images/jewellery/icon/heart.png')}}" alt="">
+                                        </a>
+                                    </li>
+
                                     <li class="onhover-dropdown mobile-account">
                                         <img src="{{asset('assets/images/jewellery/icon/avatar.png')}}" alt="">
                                         <ul class="onhover-show-div">
@@ -274,26 +279,31 @@
                                             </div>
                                         </li>
                                         <li class="onhover-div mobile-cart">
-                                            <div><img src="{{asset('assets/images/jewellery/icon/cart.png')}}"
+                                            <div>
+                                                <img src="{{asset('assets/images/jewellery/icon/cart.png')}}"
                                                       class="img-fluid blur-up lazyload" alt="">
                                                 <i class="ti-shopping-cart"></i>
                                             </div>
+                                            <span class="cart_qty_cls">2</span>
+
                                             <ul class="show-div shopping-cart">
+                                                <!-- Cart product -->
                                                 <li>
                                                     <div class="media">
-                                                        <a href="#"><img alt="" class="me-3"
-                                                                         src="{{asset('assets/images/fashion/product/1.jpg')}}"></a>
+                                                        <a href="#">
+                                                            <img alt="" class="me-3" src="{{asset('assets/images/fashion/product/1.jpg')}}">
+                                                        </a>
                                                         <div class="media-body">
-                                                            <a href="#">
-                                                                <h4>item name</h4>
-                                                            </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
+                                                            <a href="#"> <h4>item name</h4> </a>
+                                                            <h4><span>{{ $quantity=1 }} x $ {{ $price="299.00" }}</span></h4>
                                                         </div>
                                                     </div>
                                                     <div class="close-circle">
-                                                        <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                                        <a href="#">
+                                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                                        </a>
                                                     </div>
-                                                </li>
+                                                </li><!--
                                                 <li>
                                                     <div class="media">
                                                         <a href="#"><img alt="" class="me-3"
@@ -308,7 +318,8 @@
                                                     <div class="close-circle">
                                                         <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
                                                     </div>
-                                                </li>
+                                                </li>-->
+                                                <!-- Cart subtotal -->
                                                 <li>
                                                     <div class="total">
                                                         <h5>subtotal : <span>$299.00</span></h5>
