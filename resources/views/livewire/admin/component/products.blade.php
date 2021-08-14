@@ -82,10 +82,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-inverse-info btn-icon" wire:click="getEditProduct({{$product->id}})">
+                                            <button type="button" class="btn btn-inverse-info btn-icon" title="Edit Product" wire:click="getEditProduct({{$product->id}})">
                                                 <i class="mdi mdi-tooltip-edit"></i>
                                             </button>
-                                            <button type="button" class="btn btn-inverse-danger btn-icon" wire:click="deleteProduct({{$product->id}})">
+                                            <button type="button" class="btn btn-inverse-danger btn-icon" title="Delete Product" wire:click="deleteProduct({{$product->id}})">
                                                 <i class="mdi mdi-delete"></i>
                                             </button>
                                         </td>

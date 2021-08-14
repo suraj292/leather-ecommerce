@@ -9,7 +9,7 @@ Route::get('product/{slug?}', App\Http\Livewire\Public\ProductDetail::class)->na
 Route::get('register', App\Http\Livewire\Public\Register::class)->middleware('guest')->name('register');
 Route::get('verification/{user}/{code}', App\Http\Livewire\Public\Component\EmailVerify::class)->name('email_verify');
 Route::get('sendEmailVerification', App\Http\Livewire\Public\Component\ResendEmailLink::class)->name('send_email_verify');
-Route::get('collection/{slug?}')->name('collection');
+Route::get('collection/{slug?}', App\Http\Livewire\Public\Collection::class)->name('collection');
 
 Route::get('login', App\Http\Livewire\Public\Login::class)->name('login');
 
@@ -32,7 +32,7 @@ Route::group(['prefix'=>'login'], function (){
 Route::get('admin', App\Http\Livewire\Admin\Login::class)->name('admin_login')->middleware('admin');
 Route::group(['prefix'=>'admin', 'middleware'=>['R_admin']], function (){
     Route::get('dashboard', App\Http\Livewire\Admin\Dashboard::class)->name('dashboard');
-    Route::get('collection', App\Http\Livewire\Admin\Collections::class)->name('collection');
+    Route::get('collection', App\Http\Livewire\Admin\Collections::class)->name('admin.collection');
 //    Route::get('home/{component?}', App\Http\Livewire\Admin\Home::class)->name('admin_home');
     Route::group(['prefix'=>'home'], function (){
         Route::get('slider', App\Http\Livewire\Admin\Component\Slides::class)->name('slider');

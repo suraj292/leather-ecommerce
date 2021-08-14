@@ -36,8 +36,6 @@ class Test extends Component
 //            })->first()
 //            ->where('product_category_id', 1)
 //            ->get();
-//
-//        dd($this->test);
 
         //Session::put('test', 'cool ..');
 
@@ -54,8 +52,11 @@ class Test extends Component
 
 //        $this->test = collection_name::with('collectionLink')->get();
 
-        $this->test = collection_name::with('collectionLink.products')->get();
+//        $this->test = collection_name::with('collectionLink.products')->get();
 
+        $this->test = collection_name::with('collectionLink.products')
+            ->where('name', '=', 'collection_2')
+            ->firstOrFail();
 //        dd($this->test);
     }
 

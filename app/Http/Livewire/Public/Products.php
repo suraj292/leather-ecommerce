@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Public;
 
 use App\Models\product_details;
 use App\Models\sub_category;
+use App\Models\user_cart;
 use Illuminate\Support\Facades\DB;
 use App\Models\product_category;
 use Illuminate\Support\Str;
@@ -45,6 +46,23 @@ class Products extends Component
                 $q->where('sub_category_id', $id);
             }
         ])->get();
+    }
+
+    public function addToCart($id)
+    {
+        $product = product_details::find($id);
+        $addToCart = new user_cart([
+            'user_id' => '',
+            'product_id' => $product->product_id,
+            'product_color' => '',
+            'quantity' => '',
+        ]);
+        dd($product);
+    }
+
+    public function addToWishlist($id)
+    {
+
     }
 
 }

@@ -31,14 +31,15 @@
 {{--    <hr>--}}
 {{--    @endforeach--}}
 
-    @foreach($test as $collection)
+    @foreach($test->collectionLink as $product)
         <h4>
-            collection : {{ $collection->name }}
-            @foreach($collection->collectionLink as $product)
-                <br>product : {{ $product->products->title }}
-                <br>price : {{ $product->products->price }}
-                <br>
-            @endforeach
+            {{ $product->products->title }}
+{{--            collection : {{ $collection->name }}--}}
+{{--            @foreach($collection->collectionLink as $product)--}}
+{{--                <br>product : {{ $product->products->title }}--}}
+{{--                <br>price : {{ $product->products->price }}--}}
+{{--                <br>--}}
+{{--            @endforeach--}}
         </h4>
         <hr>
     @endforeach

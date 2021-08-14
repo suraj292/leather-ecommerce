@@ -109,7 +109,7 @@
                         @foreach($oldImgStk as $color)
                             <tr>
                                 <td>
-                                    <img src="{{ asset('storage/color_image/'.$color->product_color) }}" >
+                                    <img src="{{ asset('storage/color_image/'.$color->getColor->color_image) }}" >
                                 </td>
                                 <td> {{ $color->stock }} </td>
                                 <td>

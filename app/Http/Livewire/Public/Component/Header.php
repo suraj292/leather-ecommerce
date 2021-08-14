@@ -20,12 +20,14 @@ class Header extends Component
     {
         if (Cache::has('categories')){
             $this->categories = json_decode(Cache::get('categories'));
+            $this->collections = json_decode(Cache::get('collections'));
         }else {
             $this->categories = product_category::with('sub_category')->get();
             Cache::put('categories', $this->categories, 2 * 60);
+            $this->collections = collection_name::all();
+            Cache::put('collections', $this->collections, 2 * 60);
         }
         $this->user = Auth::user();
-        $this->collections = collection_name::with('collectionLink.products')->get();
     }
 
     public function dropdownSubCategory($id)

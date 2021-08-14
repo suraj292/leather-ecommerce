@@ -31,12 +31,12 @@ class EditProduct extends Component
         $this->editProductReturn = $this->product->details->return;
         $this->editProductSale = $this->product->details->sale;
         $this->editProductDiscount = $this->product->details->discount;
-        $this->oldImgStk = product_color_image::where('product_id', $this->editProductId)->get();
+        $this->oldImgStk = product_color_image::with('getColor')->where('product_id', $this->editProductId)->get();
     }
     public function getProductColorId($id){
         // this is for editing images of color
-        $colorImgTable = product_color_image::find($id);
-        $this->selectedColor = $colorImgTable->product_color;
+        $colorImgTable = product_color_image::with('getColor')->find($id);
+        $this->selectedColor = $colorImgTable->getColor->color_image;
         $this->images = explode(',', $colorImgTable->images);
         $this->productColorId = $id;
         $this->editStock = $colorImgTable->stock;

@@ -89,7 +89,7 @@
                                             <ul>
                                                 @foreach( $color as $index => $color )
                                                 <li role="button" wire:click="getProductColor({{ $index }})">
-                                                    <img src="{{ asset('storage/color_image/'.$color->product_color ) }}" alt="color" width="40px" class="rounded">
+                                                    <img src="{{ asset('storage/color_image/'.$color->getColor->color_image ) }}" alt="color" width="40px" class="rounded">
                                                 </li>
                                                 @endforeach
                                             </ul>

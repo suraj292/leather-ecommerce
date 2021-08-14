@@ -12,7 +12,7 @@ class ProductColorImg extends Component
 {
     use WithFileUploads;
 
-    public $colors, $productId, $productColors, $imgName, $product,
+    public $colors, $productId, $colorId, $imgName, $product,
             $newImg1, $newImg2, $newImg3, $newImg4, $newImg5, $stockQuantity=1;
 
     public function render()
@@ -24,7 +24,7 @@ class ProductColorImg extends Component
     }
     public function productColorImg(){
         $this->validate([
-            'productColors' => 'required',
+            'colorId' => 'required',
 //            'stockQuantity' => '',
             'newImg1' => 'required|image|max:2564',
             'newImg2' => 'required|image|max:2564',
@@ -71,13 +71,13 @@ class ProductColorImg extends Component
 
         $create_color_img = product_color_image::create([
            'product_id'=>$this->productId,
-           'product_color'=>$this->productColors,
+           'product_color_id'=>$this->colorId,
            'stock'=>$this->stockQuantity,
            'images'=> $this->imgName,
         ]);
         if ($create_color_img){
             session()->flash('color_img', 'Color & Images has been added.');
-            $this->productColors = null;
+            $this->colorId = null;
             $this->stockQuantity = 1;
             $this->newImg1 = null;
             $this->newImg2 = null;

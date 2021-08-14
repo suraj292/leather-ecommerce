@@ -16,7 +16,7 @@ class CreateProductColorImageTable extends Migration
         Schema::create('product_color_image', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            $table->string('product_color');
+            $table->foreignId('product_color_id')->constrained('select_product_color')->onDelete('cascade');
             $table->string('stock');
             $table->longText('images');
         });

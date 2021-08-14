@@ -82,7 +82,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('collection') }}">
+                    <a class="nav-link" href="{{ route('admin.collection') }}">
                         <span class="menu-title">Collections</span>
                         <i class="mdi mdi-animation menu-icon"></i>
                     </a>

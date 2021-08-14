@@ -108,10 +108,10 @@
                                                             </div>
 {{--                                                            @endif--}}
                                                             <div class="cart-info cart-wrap">
-                                                                <button {{--  data-bs-toggle="modal"  --}} data-bs-target="#addtocart" title="Add to cart">
+                                                                <button data-bs-target="#addtocart" title="Add to cart" wire:click="addToCart({{ $product->product_id }})">
                                                                     <i class="ti-shopping-cart"></i>
                                                                 </button>
-                                                                <a href="javascript:void(0)" title="Add to Wishlist">
+                                                                <a href="javascript:void(0)" title="Add to Wishlist" wire:click="addToWishlist({{ $product->product_id }})">
                                                                     <i class="ti-heart" aria-hidden="true"></i>
                                                                 </a>
 {{--                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View">--}}

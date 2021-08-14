@@ -11,12 +11,12 @@
             <form class="forms-sample" wire:submit.prevent="productColorImg">
                 <!-- select color -->
                 <div class="form-group" wire:ignore>
-                    <select class="selectpicker" wire:model.lazy="productColors">
+                    <select class="selectpicker" wire:model.lazy="colorId">
                         <option selected> Select below </option>
                         @foreach($colors as $color)
                         <option
                             data-content=" <img src='{{ asset('storage/color_image/'.$color->color_image ) }}' width='20px'> &nbsp;&nbsp;&nbsp;{{$color->color_name}} "
-                            value="{{ $color->color_image }}"
+                            value="{{ $color->id }}"
                         ></option>
                         @endforeach
                     </select>

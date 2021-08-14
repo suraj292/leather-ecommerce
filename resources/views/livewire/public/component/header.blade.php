@@ -60,7 +60,7 @@
                                                                         <ul>
                                                                             @foreach($collections as $collection)
                                                                                 <li>
-                                                                                    <a href="index.html">{{ $collection->name }}</a>
+                                                                                    <a href="{{ route('collection', Str::slug($collection->name)) }}">{{ $collection->name }}</a>
                                                                                 </li>
                                                                             @endforeach
 {{--                                                                            <li><a href="index.html">exit<i--}}
