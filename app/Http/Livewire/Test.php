@@ -54,10 +54,20 @@ class Test extends Component
 
 //        $this->test = collection_name::with('collectionLink.products')->get();
 
-        $this->test = collection_name::with('collectionLink.products')
-            ->where('name', '=', 'collection_2')
-            ->firstOrFail();
-//        dd($this->test);
+//        $this->test = collection_name::with('collectionLink.products')
+//            ->where('name', '=', 'collection_2')
+//            ->firstOrFail();
+////        dd($this->test);
+
+//        $this->test = Session::get('cart');
+
+        $this->test = [
+            [
+                'name'=>'suraj',
+                'age'=>21,
+            ],
+        ];
+
     }
 
     public function increase()

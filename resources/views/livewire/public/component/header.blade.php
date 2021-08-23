@@ -34,20 +34,13 @@
                                                                         <ul>
                                                                             @foreach($categories as $category)
                                                                                 <li>
-                                                                                    <a href="{{ route('products', $category->product_category) }}">{{$category->product_category}}
+                                                                                    <a href="{{ url('products/'.$category['product_category']) }}">
+                                                                                        {{ $category['product_category'] }}
                                                                                         <i class="fa fa-bolt icon-trend" aria-hidden="true"></i>
                                                                                     </a>
-{{--                                                                                    @if(count($category->sub_category) > 0)--}}
-{{--                                                                                        <ul>--}}
-{{--                                                                                            @foreach($category->sub_category as $subcategory)--}}
-{{--                                                                                                <li><a wire:click="$emit('product_category', {{$subcategory->id}})">{{$subcategory->sub_category}}</a></li>--}}
-{{--                                                                                            @endforeach--}}
-{{--                                                                                        </ul>--}}
-{{--                                                                                    @endif--}}
                                                                                 </li>
                                                                             @endforeach
                                                                         </ul>
-                                                                        <!-- li>a>icon:<i class="fa fa-bolt icon-trend" aria-hidden="true"></i> -->
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -60,7 +53,9 @@
                                                                         <ul>
                                                                             @foreach($collections as $collection)
                                                                                 <li>
-                                                                                    <a href="{{ route('collection', Str::slug($collection->name)) }}">{{ $collection->name }}</a>
+                                                                                    <a href="{{ route('collection', Str::slug($collection->name)) }}">
+                                                                                        {{ $collection->name }}
+                                                                                    </a>
                                                                                 </li>
                                                                             @endforeach
 {{--                                                                            <li><a href="index.html">exit<i--}}
@@ -284,45 +279,44 @@
                                                       class="img-fluid blur-up lazyload" alt="">
                                                 <i class="ti-shopping-cart"></i>
                                             </div>
-                                            <span class="cart_qty_cls">2</span>
+                                            @if(!is_null($cart))
+                                            <span class="cart_qty_cls">{{ count($cart) }}</span>
 
                                             <ul class="show-div shopping-cart">
                                                 <!-- Cart product -->
-                                                <li>
-                                                    <div class="media">
-                                                        <a href="#">
-                                                            <img alt="" class="me-3" src="{{asset('assets/images/fashion/product/1.jpg')}}">
-                                                        </a>
-                                                        <div class="media-body">
-                                                            <a href="#"> <h4>item name</h4> </a>
-                                                            <h4><span>{{ $quantity=1 }} x $ {{ $price="299.00" }}</span></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="close-circle">
-                                                        <a href="#">
-                                                            <i class="fa fa-times" aria-hidden="true"></i>
-                                                        </a>
-                                                    </div>
-                                                </li><!--
-                                                <li>
-                                                    <div class="media">
-                                                        <a href="#"><img alt="" class="me-3"
-                                                                         src="{{asset('assets/images/fashion/product/2.jpg')}}"></a>
-                                                        <div class="media-body">
+                                                <span style="display: none;">
+                                                    {{ $subtotal=0 }}
+                                                </span>
+                                                @foreach($cart as $cartProduct)
+                                                    <li>
+                                                        <div class="media">
                                                             <a href="#">
-                                                                <h4>item name</h4>
+                                                                <img alt="" class="me-3" src="{{asset('storage/product/'.$cartProduct['image'])}}">
                                                             </a>
-                                                            <h4><span>1 x $ 299.00</span></h4>
+                                                            <div class="media-body">
+                                                                <a href="#"> <h4>{{ $cartProduct['title'] }}</h4> </a>
+                                                                <h4>
+                                                                    <span>
+                                                                        {{ $cartProduct['quantity'] }}  x $
+                                                                        {{$cartProduct['quantity'] * $cartProduct['price'] }}
+                                                                    </span>
+                                                                    <span style="display: none;">
+                                                                        {{ $subtotal += $cartProduct['quantity'] * $cartProduct['price'] }}
+                                                                    </span>
+                                                                </h4>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="close-circle">
-                                                        <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                                    </div>
-                                                </li>-->
+                                                        <div class="close-circle">
+                                                            <a href="#">
+                                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                @endforeach
                                                 <!-- Cart subtotal -->
                                                 <li>
                                                     <div class="total">
-                                                        <h5>subtotal : <span>$299.00</span></h5>
+                                                        <h5>subtotal : <span>{{ $subtotal }}</span></h5>
                                                     </div>
                                                 </li>
                                                 <li>
@@ -332,6 +326,18 @@
                                                     </div>
                                                 </li>
                                             </ul>
+                                            @else
+                                                <ul class="show-div shopping-cart">
+                                                    <!-- if empty Cart product -->
+                                                    <li>
+                                                        <div class="media">
+                                                            <div class="media-body">
+                                                                <h5>No Product added to cart.</h5>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            @endif
                                         </li>
                                     </ul>
                                 </div>

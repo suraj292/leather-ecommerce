@@ -36,10 +36,8 @@ class login extends Controller
                'social_network' => 'GOOGLE',
             ]);
             Auth::login($newUser);
-            //Auth::login($newUser);
-            //$newUser->session()->regenerate();
         }
-        //return redirect(route('register'));
+        return redirect(route('home'));
     }
 
     public function facebook()

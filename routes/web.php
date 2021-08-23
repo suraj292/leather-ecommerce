@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 //      PUBLIC
 Route::get('/', \App\Http\Livewire\Public\Home::class)->name('home');
 Route::get('products/{category?}', App\Http\Livewire\Public\Products::class)->name('products');
-Route::get('product/{slug?}', App\Http\Livewire\Public\ProductDetail::class)->name('product_details');
+Route::get('product/{slug}', App\Http\Livewire\Public\ProductDetail::class)->name('product_details');
 Route::get('register', App\Http\Livewire\Public\Register::class)->middleware('guest')->name('register');
 Route::get('verification/{user}/{code}', App\Http\Livewire\Public\Component\EmailVerify::class)->name('email_verify');
 Route::get('sendEmailVerification', App\Http\Livewire\Public\Component\ResendEmailLink::class)->name('send_email_verify');

@@ -31,18 +31,29 @@
 {{--    <hr>--}}
 {{--    @endforeach--}}
 
-    @foreach($test->collectionLink as $product)
-        <h4>
-            {{ $product->products->title }}
+{{--    @foreach($test as $product)--}}
+{{--        <h4>--}}
 {{--            collection : {{ $collection->name }}--}}
 {{--            @foreach($collection->collectionLink as $product)--}}
 {{--                <br>product : {{ $product->products->title }}--}}
 {{--                <br>price : {{ $product->products->price }}--}}
 {{--                <br>--}}
 {{--            @endforeach--}}
-        </h4>
-        <hr>
-    @endforeach
+{{--        </h4>--}}
+{{--        <hr>--}}
+{{--    @endforeach--}}
+
+{{--    @foreach($test as $cart)--}}
+{{--    <h4>--}}
+{{--        {{ $cart['title'] }}--}}
+{{--    </h4>--}}
+{{--    @endforeach--}}
+
+    @forelse($test as $t)
+        <h4>forelse</h4>
+    @empty
+        <h4>empty</h4>
+    @endforelse
 
 </div>
 @section('style')

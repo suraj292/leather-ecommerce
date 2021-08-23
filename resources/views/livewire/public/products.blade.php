@@ -77,7 +77,7 @@
                                         </div>
                                         <!-- Products -->
                                         <div class="product-wrapper-grid">
-                                            <div class="row margin-res">
+                                            <div class="row margin-res" wire:ignore>
                                                 @foreach($products as $product)
 {{--                                                    @if($product->product != null)--}}
                                                 <div class="col-xl-3 col-6 col-grid-box">

@@ -15,9 +15,12 @@ class CreateUserCartTable extends Migration
     {
         Schema::create('user_cart', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('product_id')->constrained('product_details')->onDelete('cascade');
-            $table->foreignId('product_color')->constrained('select_product_color')->onDelete('cascade');
+            $table->foreignId('product_color_id')->constrained('product_color_image')->onDelete('cascade');
+            $table->string('title');
+            $table->string('price');
+            $table->string('image');
             $table->string('quantity');
         });
     }
