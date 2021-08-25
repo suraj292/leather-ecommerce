@@ -287,7 +287,7 @@
                                                 <span style="display: none;">
                                                     {{ $subtotal=0 }}
                                                 </span>
-                                                @foreach($cart as $cartProduct)
+                                                @foreach($cart as $key => $cartProduct)
                                                     <li>
                                                         <div class="media">
                                                             <a href="#">
@@ -307,9 +307,16 @@
                                                             </div>
                                                         </div>
                                                         <div class="close-circle">
-                                                            <a href="#">
-                                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                                            </a>
+                                                            @auth()
+                                                                <a wire:click="dProductCart({{ $cartProduct['product_id'] }})">
+                                                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                                                </a>
+                                                            @endauth
+                                                            @guest()
+                                                                <a wire:click="dProductCart({{ $key }})">
+                                                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                                                </a>
+                                                            @endguest
                                                         </div>
                                                     </li>
                                                 @endforeach

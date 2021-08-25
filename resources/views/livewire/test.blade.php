@@ -42,18 +42,19 @@
 {{--        </h4>--}}
 {{--        <hr>--}}
 {{--    @endforeach--}}
+{{--    \Illuminate\Support\Facades\Auth::id()--}}
 
-{{--    @foreach($test as $cart)--}}
-{{--    <h4>--}}
-{{--        {{ $cart['title'] }}--}}
-{{--    </h4>--}}
-{{--    @endforeach--}}
-
-    @forelse($test as $t)
-        <h4>forelse</h4>
-    @empty
-        <h4>empty</h4>
-    @endforelse
+    @foreach(session('cart') as $cart)
+        @if($cart['user_id'] == null)
+        <h4>
+            user : {{ $cart['user_id'] == null ? 'null' : 'user logged in' }}<br>
+            product id: {{ $cart['product_id'] }}<br>
+            title : {{ $cart['title'] }}<br>
+            price : {{ $cart['price'] }}
+            <hr>
+        </h4>
+        @endif
+    @endforeach
 
 </div>
 @section('style')

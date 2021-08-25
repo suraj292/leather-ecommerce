@@ -7,9 +7,7 @@ use App\Models\product_details;
 use App\Models\sub_category;
 use App\Models\user_cart;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Models\product_category;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
@@ -57,17 +55,18 @@ class Products extends Component
         Auth::check() ? $user_id=Auth::user()->id : $user_id=null;
         $product->offer_price ? $price = $product->offer_price : $price = $product->price;
         $image = explode(',', $product->product_color_img->images);
-        $product_color = product_color_image::with('getColor')->where('product_id', '=', $id)->first();
+        $product_color = product_color_image::where('product_id', '=', $product->product_id)->first();
 
         $addToCart = [
             'user_id' => $user_id,
             'product_id' => $product->product_id,
+            'product_color_id' => $product_color->product_color_id,
             'title' => $product->title,
             'price' => $price,
             'image' => $image[0],
-            'product_color_id' => $product_color->getColor->id,
             'quantity' => 1,
         ];
+
         $this->emit('cartUpdated', $addToCart);
     }
 

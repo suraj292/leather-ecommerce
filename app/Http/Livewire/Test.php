@@ -8,6 +8,8 @@ use App\Models\product_category;
 use App\Models\product_color;
 use App\Models\product_details;
 use App\Models\products;
+use App\Models\user_verification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
@@ -59,15 +61,16 @@ class Test extends Component
 //            ->firstOrFail();
 ////        dd($this->test);
 
-//        $this->test = Session::get('cart');
-
-        $this->test = [
-            [
-                'name'=>'suraj',
-                'age'=>21,
-            ],
-        ];
-
+        dd(Session::get('cart'));
+//        if (Auth::check() && session()->has('cart')){
+//            foreach (Session::get('cart') as $cart){
+//                if ($cart['user_id'] == null){
+//                    $cart['user_id'] = Auth::id();
+//                    $this->test = $cart;
+//                }else{return;}
+//            }
+//        }
+//        dd($this->test);
     }
 
     public function increase()

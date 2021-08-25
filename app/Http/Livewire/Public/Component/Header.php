@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
 class Header extends Component
 {
@@ -17,18 +19,40 @@ class Header extends Component
 
     public function cartUpdated($addToCart)
     {
-        if (Session::has('cart')){
-            foreach (Session::get('cart') as $cart){
-                if ($cart['title'] != $addToCart['title']){
-                    Session::push('cart', $addToCart);
-                    Session::save();
-                }else{return;}
+        if (Auth::check()){
+            $cart_product = user_cart::where('user_id', Auth::id())->get();
+            if (!$cart_product->isEmpty()){
+                foreach ($cart_product as $product) {
+                    if ($product['product_id'] == $addToCart['product_id']) {
+                        return;
+                    } else {
+                        $cart = $addToCart;
+                    }
+                }
+                user_cart::create($cart);
+            }else{
+                user_cart::create($addToCart);
             }
-        }else{
-            Session::put('cart', [$addToCart]);
-            Session::save();
+            $this->cart = user_cart::where('user_id', Auth::id())->get();
+        }else {
+            // validate session don't repeat cart product
+            if (session()->has('cart')) {
+                foreach (session('cart') as $cart) {
+                    if ($addToCart['product_id'] == $cart['product_id']) {
+                        return;
+                    } else {
+                        $cart = $addToCart;
+                    }
+                }
+            }
+            //if user logged in than cart will save to database
+            if (session()->has('cart')) {
+                session()->push('cart', $cart);
+            } else {
+                session()->put('cart', [$addToCart]);
+            }
+            $this->cart = Session::get('cart');
         }
-        $this->cart = Session::get('cart');
     }
 
     public function render()
@@ -48,18 +72,24 @@ class Header extends Component
             Cache::put('collections', $this->collections, 2 * 60);
         }
         $this->user = Auth::user();
-        $this->cart = Session::get('cart');
 
-        if (Auth::check()){
+        $db_user_cart = user_cart::where('user_id', Auth::id())->get();
+        if (!$db_user_cart->isEmpty()){
+            $this->cart = $db_user_cart;
+        }else{
+            $this->cart = Session::get('cart');
+        }
+        if (Auth::check() && session()->has('cart')){
             foreach (Session::get('cart') as $cart){
-                if ($cart['user_id'] == null){
+                if ($cart['user_id'] == null && $db_user_cart->isEmpty()) {
                     $cart['user_id'] = Auth::id();
+                    user_cart::create($cart);
+                    session()->forget('cart');
+                } else {
+                    return;
                 }
-                Session::put('cart', [$cart]);
             }
         }
-
-        dd(Session::get('cart'));
 
     }
 
@@ -68,9 +98,24 @@ class Header extends Component
         $this->emit('product_category', $id);
     }
 
+    public function dProductCart($key)
+    {
+        if (Auth::check()){
+            $product = user_cart::where('user_id', Auth::id())->where('product_id', $key)->first();
+            $product->delete();
+            $this->cart = user_cart::where('user_id', Auth::id())->get();
+        }else {
+            $cartProduct = Session::get('cart');
+            unset($cartProduct[$key]);
+            Session::put('cart', $cartProduct);
+            $this->cart = Session::get('cart');
+        }
+    }
+
     public function logout()
     {
         Auth::logout();
+        Session::flush();
         return redirect(route('login'));
     }
 
