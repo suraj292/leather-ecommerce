@@ -291,7 +291,7 @@
                                                     <li>
                                                         <div class="media">
                                                             <a href="#">
-                                                                <img alt="" class="me-3" src="{{asset('storage/product/'.$cartProduct['image'])}}">
+                                                                <img alt="" class="me-3" src="{{asset('storage/product/small/'.$cartProduct['image'])}}">
                                                             </a>
                                                             <div class="media-body">
                                                                 <a href="#"> <h4>{{ $cartProduct['title'] }}</h4> </a>

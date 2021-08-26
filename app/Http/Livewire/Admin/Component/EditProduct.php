@@ -117,7 +117,7 @@ class EditProduct extends Component
 
     }
     public function addImgDiv(){
-            $this->imgDiv = true;
+        $this->imgDiv = true;
     }
 
     public function deleteColorImg($id){
@@ -125,11 +125,13 @@ class EditProduct extends Component
         $x = product_color_image::find($id);
         $img = explode(',', $x->images);
         foreach ($img as $image){
-            Storage::delete('public/product/'.$image);
+            Storage::delete('public/product/small/'.$image);
+            Storage::delete('public/product/large/'.$image);
         }
         $x->delete();
         $this->images = null;
-        $this->product = \App\Models\products::with('details', 'product_all_img')->find($this->editProductId);
+        $this->oldImgStk = product_color_image::where('product_id', $this->editProductId)->get();
+        //$this->product = \App\Models\products::with('details', 'product_all_img')->find($this->editProductId);
     }
 
     public function addColor(){

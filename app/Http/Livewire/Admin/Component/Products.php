@@ -82,7 +82,8 @@ class Products extends Component
         $product = \App\Models\products::with('product_all_img')->find($id);
         foreach ($product->product_all_img as $y){
             foreach (explode(',', $y->images) as $image){
-                Storage::delete('public/product/'.$image);
+                Storage::delete('public/product/small/'.$image);
+                Storage::delete('public/product/large/'.$image);
             }
         }
         $product->delete();

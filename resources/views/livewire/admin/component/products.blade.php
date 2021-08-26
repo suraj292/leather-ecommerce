@@ -68,7 +68,7 @@
                                     <tr>
                                         <td>
                                             @if($product->product_color_img != null)
-                                                <img src="{{ url('storage/product/'.explode(',', $product->product_color_img->images)[0]) }}" alt="thumbnail">
+                                                <img src="{{ url('storage/product/small/'.explode(',', $product->product_color_img->images)[0]) }}" alt="thumbnail">
                                             @else
                                                 <img src="{{ asset('assets\images\test\empty.jpg') }}" alt="thumbnail">
                                             @endif
@@ -99,8 +99,8 @@
             </div>
 
             {{--    for editing product detail and color, Images    --}}
-            @if(!is_null($editProductId))
-            <livewire:admin.component.edit-product :editProductId="$editProductId" />
+            @if(!empty($editProductId))
+                <livewire:admin.component.edit-product key="{{ now() }}" :editProductId="$editProductId" />
             @endif
 
             {{--  1. Create new product (details Only)  --}}

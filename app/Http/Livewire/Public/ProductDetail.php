@@ -4,12 +4,13 @@ namespace App\Http\Livewire\Public;
 
 use App\Models\product_color_image;
 use App\Models\product_details;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
 class ProductDetail extends Component
 {
-    public $product, $images, $color, $productId;
+    public $product, $images, $color, $productId, $quantity=1, $product_color;
 
     public function render()
     {
@@ -23,6 +24,7 @@ class ProductDetail extends Component
         $this->product = product_details::where('product_id', $this->productId)->first();
         $this->color = product_color_image::where('product_id', $this->productId)->get();
         $this->images = explode(',', $this->color[0]->images);
+        $this->product_color = $this->color[0]->product_color_id;
     }
 
     public function getProductColor($array)
@@ -30,6 +32,38 @@ class ProductDetail extends Component
         //$color = product_color_image::where('product_id', $this->productId)->get();
         //$this->images = null;
         $this->images = explode(',', $this->color[$array]->images);
+        $this->product_color = $this->color[$array]->product_color_id;
 //        dd($this->images->images);
+    }
+
+    public function addToCart($id)
+    {
+        $product = product_details::with('product_color_img')->find($id);
+        Auth::check() ? $user_id=Auth::user()->id : $user_id=null;
+        $product->offer_price ? $price = $product->offer_price : $price = $product->price;
+        $image = explode(',', $product->product_color_img->images);
+        $product_color = product_color_image::where('product_id', '=', $product->product_id)->first();
+
+        $addToCart = [
+            'user_id' => $user_id,
+            'product_id' => $product->product_id,
+            'product_color_id' => $this->product_color,
+            'title' => $product->title,
+            'price' => $price,
+            'image' => $image[0],
+            'quantity' => $this->quantity,
+        ];
+        $this->emit('cartUpdated', $addToCart);
+    }
+
+    public function decrement()
+    {
+        if (1 < $this->quantity){
+            $this->quantity--;
+        }
+    }
+    public function increment()
+    {
+        $this->quantity++;
     }
 }

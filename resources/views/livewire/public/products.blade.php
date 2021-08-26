@@ -94,7 +94,7 @@
                                                             </div>
                                                             <div class="front">
                                                                 <a href="{{ route('product_details', Str::slug($product->title)) }}">
-                                                                    <img src="{{ asset('storage/product/'.explode(',', $product->product_color_img->images)[0]) }}"
+                                                                    <img src="{{ asset('storage/product/small/'.explode(',', $product->product_color_img->images)[0]) }}"
                                                                          class="img-fluid blur-up lazyload bg-img" alt="">
 {{--                                                                    <img src="{{ asset('storage/product/'.explode(',', $product->product_color_img->images)[0]) }}"--}}
 {{--                                                                         class="img-fluid blur-up lazyload bg-img" alt="">--}}
@@ -102,7 +102,7 @@
                                                             </div>
                                                             <div class="back">
                                                                 <a href="{{ route('product_details', Str::slug($product->title)) }}">
-                                                                    <img src="{{ asset('storage/product/'.explode(',', $product->product_color_img->images)[1]) }}"
+                                                                    <img src="{{ asset('storage/product/small/'.explode(',', $product->product_color_img->images)[1]) }}"
                                                                          class="img-fluid blur-up lazyload bg-img" alt="">
                                                                 </a>
                                                             </div>

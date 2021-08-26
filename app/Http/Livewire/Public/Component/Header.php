@@ -24,12 +24,14 @@ class Header extends Component
             if (!$cart_product->isEmpty()){
                 foreach ($cart_product as $product) {
                     if ($product['product_id'] == $addToCart['product_id']) {
-                        return;
-                    } else {
-                        $cart = $addToCart;
+                        $productUpdate = $product;
                     }
                 }
-                user_cart::create($cart);
+                if (!empty($productUpdate)){
+                    $productUpdate->update($addToCart);
+                }else{
+                    user_cart::create($addToCart);
+                }
             }else{
                 user_cart::create($addToCart);
             }

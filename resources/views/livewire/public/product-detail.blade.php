@@ -36,34 +36,34 @@
                     <div class="col-lg-4">
                         <div class="col-lg-12">
                             <img id="zoom_01"
-                                 src="{{ asset('storage/product/'.$images[0]) }}"
-                                 data-zoom-image="{{ asset('storage/product/'.$images[0]) }}"
+                                 src="{{ asset('storage/product/small/'.$images[0]) }}"
+                                 data-zoom-image="{{ asset('storage/product/large/'.$images[0]) }}"
                                  class="img-fluid blur-up lazyload">
                         </div>
-                        <div class="row" id="thumb-image" style="margin-top: 10px;">
+                        <div class="col-lg-12 row mx-auto" id="thumb-image" style="margin-top: 10px;">
                             @foreach($images as $image)
-                            <div class="col-md-2">
-                                <a type="button"
-                                   data-image="{{ asset('storage/product/'.$image) }}"
-                                   data-zoom-image="{{ asset('storage/product/'.$image) }}">
-                                    <img src="{{ asset('storage/product/'.$image) }}" width="60px"/>
-                                </a>
-                            </div>
+                                <div class="col-2">
+                                    <a type="button"
+                                       data-image="{{ asset('storage/product/small/'.$image) }}"
+                                       data-zoom-image="{{ asset('storage/product/large/'.$image) }}">
+                                        <img src="{{ asset('storage/product/small/'.$image) }}" width="60px"/>
+                                    </a>
+                                </div>
                             @endforeach
                         </div>
-                        <script>
-                            $('#zoom_01').elevateZoom({
 
-                                gallery: 'thumb-image',
-                                galleryActiveClass: 'active',
-                                imageCrossfade: true,
-
-                                zoomType: "lens",
-                                cursor: "crosshair",
-                                lensSize: 200,
-                            });
-                        </script>
                     </div>
+                    <script>
+                        $('#zoom_01').elevateZoom({
+                            gallery: 'thumb-image',
+                            galleryActiveClass: 'active',
+                            imageCrossfade: true,
+
+                            zoomType: "lens",
+                            cursor: "crosshair",
+                            lensSize: 200,
+                        });
+                    </script>
 
                     <div class="col-lg-7 accordion-body mx-auto">
                         <div class="product-right product-description-box">
@@ -85,7 +85,7 @@
                                         </button>
                                     </h2>
                                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
+                                        <div class="accordion-body" wire:ignore>
                                             <ul>
                                                 @foreach( $color as $index => $color )
                                                 <li role="button" wire:click="getProductColor({{ $index }})">
@@ -146,13 +146,13 @@
                                     <div class="col-10">
                                         <div class="input-group">
                                             <span class="input-group-prepend">
-                                                <button type="button" class="btn quantity-left-minus" data-type="minus" data-field="">
+                                                <button type="button" class="btn" wire:click="decrement">
                                                     <i class="ti-angle-left"></i>
                                                 </button>
                                             </span>
-                                                <input type="text" name="quantity" class="form-control input-number" value="1">
+                                                <input type="text" class="form-control" wire:model="quantity">
                                             <span class="input-group-prepend">
-                                                <button type="button" class="btn quantity-right-plus" data-type="plus" data-field="">
+                                                <button type="button" class="btn" wire:click="increment">
                                                     <i class="ti-angle-right"></i>
                                                 </button>
                                             </span>
@@ -162,8 +162,8 @@
                             </div>
 
                             <div class="product-buttons mt-3">
-                                <a href="javascript:void(0)" id="cartEffect" class="btn btn-solid hover-solid btn-animation">add to cart</a>
-                                <a href="#" class="btn btn-solid">wishlist</a>
+                                <a id="cartEffect" class="add-to-cart btn btn-solid hover-solid btn-animation" wire:click="addToCart({{ $product->product_id }})">add to cart</a>
+                                <a href="#" class="btn btn-solid">buy now</a>
                             </div>
                         </div>
                     </div>
@@ -262,12 +262,13 @@
                                                  class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             <div class="cart-info cart-wrap">
-                                <button data-bs-toggle="modal" data-bs-target="#addtocart" title="Add to cart"><i
-                                        class="ti-shopping-cart"></i></button> <a href="javascript:void(0)"
-                                                                                  title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                                                                                                                             data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View"><i
-                                        class="ti-search" aria-hidden="true"></i></a> <a href="compare.html"
-                                                                                         title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                                <button data-bs-target="#addtocart" title="Add to cart">
+                                    <i class="ti-shopping-cart"></i>
+                                </button>
+                                <a href="javascript:void(0)" title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a>
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View">
+                                    <i class="ti-search" aria-hidden="true"></i></a>
+                                <a href="compare.html" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
                             </div>
                         </div>
                         <div class="product-detail">
@@ -292,6 +293,7 @@
 </div>
 @section('style')
 <script src="{{ asset('assets/js/jquery.elevatezoom2.js') }}"></script>
+{{-- also remove zoom.js --}}
 {{--<script src="{{ asset('assets/js/zoom-image.js') }}"></script>--}}
 {{--<script src="{{ asset('assets/js/main2.js') }}"></script>--}}
 @endsection

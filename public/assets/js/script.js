@@ -1725,7 +1725,7 @@
     /*=====================
      19.Add to cart
      ==========================*/
-    $('.product-box button .ti-shopping-cart').on('click', function () {
+    $('.add-to-cart, .product-box button .ti-shopping-cart').on('click', function () {
         $.notify({
             icon: 'fa fa-check',
             title: 'Success!',
