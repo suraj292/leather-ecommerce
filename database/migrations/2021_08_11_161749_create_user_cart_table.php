@@ -17,7 +17,7 @@ class CreateUserCartTable extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->foreignId('product_id')->constrained('product_details')->onDelete('cascade');
-            $table->foreignId('product_color_id')->constrained('product_color_image')->onDelete('cascade');
+            $table->foreignId('product_color_id')->constrained('select_product_color')->onDelete('cascade');
             $table->string('title');
             $table->string('price');
             $table->string('image');

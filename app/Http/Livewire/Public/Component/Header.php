@@ -15,7 +15,7 @@ use function PHPUnit\Framework\isNull;
 class Header extends Component
 {
     public $categories, $user, $collections, $cart;
-    protected $listeners = ['cartUpdated'];
+    protected $listeners = ['cartUpdated', 'cartRemoved'];
 
     public function cartUpdated($addToCart)
     {
@@ -53,6 +53,15 @@ class Header extends Component
             } else {
                 session()->put('cart', [$addToCart]);
             }
+            $this->cart = Session::get('cart');
+        }
+    }
+
+    public function cartRemoved()
+    {
+        if (Auth::check()){
+            $this->cart = user_cart::where('user_id', Auth::id())->get();
+        }else{
             $this->cart = Session::get('cart');
         }
     }

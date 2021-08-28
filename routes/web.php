@@ -10,6 +10,7 @@ Route::get('register', App\Http\Livewire\Public\Register::class)->middleware('gu
 Route::get('verification/{user}/{code}', App\Http\Livewire\Public\Component\EmailVerify::class)->name('email_verify');
 Route::get('sendEmailVerification', App\Http\Livewire\Public\Component\ResendEmailLink::class)->name('send_email_verify');
 Route::get('collection/{slug?}', App\Http\Livewire\Public\Collection::class)->name('collection');
+Route::get('cart', App\Http\Livewire\Public\Component\Cart::class)->name('cart');
 
 Route::get('login', App\Http\Livewire\Public\Login::class)->name('login');
 

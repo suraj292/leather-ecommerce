@@ -200,7 +200,7 @@
                                 <ul class="header-dropdown">
 
                                     <li class="mobile-wishlist">
-                                        <a href="#">
+                                        <a href="#" title="Wishlist">
                                             <img src="{{asset('assets/images/jewellery/icon/heart.png')}}" alt="">
                                         </a>
                                     </li>
@@ -334,6 +334,7 @@
                                                 </li>
                                             </ul>
                                             @else
+                                                <span class="cart_qty_cls">0</span>
                                                 <ul class="show-div shopping-cart">
                                                     <!-- if empty Cart product -->
                                                     <li>

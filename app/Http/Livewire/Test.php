@@ -61,7 +61,7 @@ class Test extends Component
 //            ->firstOrFail();
 ////        dd($this->test);
 
-        dd(Session::get('cart'));
+//        dd(Session::get('cart'));
 //        if (Auth::check() && session()->has('cart')){
 //            foreach (Session::get('cart') as $cart){
 //                if ($cart['user_id'] == null){
