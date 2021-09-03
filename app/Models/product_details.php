@@ -10,7 +10,7 @@ class product_details extends Model
     use HasFactory;
     protected $table = "product_details";
     public $timestamps = false;
-    protected $fillable = ['product_id', 'title', 'dimension', 'description', 'care_instruction', 'gender', 'price', 'offer_price', 'return', 'sale', 'discount'];
+    protected $fillable = ['product_id', 'title', 'dimension', 'description', 'care_instruction', 'gender', 'price', 'offer_price', 'return', 'sale', 'discount', 'italian', 'specification'];
 
     public function product()
     {

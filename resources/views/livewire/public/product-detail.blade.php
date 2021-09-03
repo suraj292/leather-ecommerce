@@ -136,6 +136,22 @@
                                     </div>
                                 </div>
 
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFive">
+                                        <button class="accordion-button collapsed p-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                                            SPECIFICATIONS
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <ul class="list-group">
+                                                <li class="bullet-line-list">list one</li>
+                                                <li>list two</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="qty-box mt-3">

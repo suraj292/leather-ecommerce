@@ -14,13 +14,14 @@ class Products extends Component
     public $categories, $subCategories, $products,
         $selectedCategory, $selectedSubCategory,
         $productTitle, $productDimension, $productDescription, $productCareInstruction, $productPrice, $productOfferPrice, $productReturn, $productSale, $productDiscount, $gender,
-        $productId, $editProductId;
+        $productId, $editProductId, $productItalian, $specList, $productSpecification;
     public function render()
     {
         return view('livewire.admin.component.products')->layout('layouts.admin');
     }
     public function mount(){
         $this->categories = product_category::all();
+        $this->specList=[['productSpecification'=>'']];
     }
     public function updatedSelectedCategory($selectedCategory){
         $this->subCategories = sub_category::where('product_category_id', $selectedCategory)->get();
@@ -36,7 +37,7 @@ class Products extends Component
         $this->editProductId = null;
         $this->productId = null;
     }
-    public function productDetails(){
+    public function saveProductDetails(){
         $this->validate([
             'productTitle' => 'required|max:100',
             'productDimension' => 'max:100',
@@ -45,18 +46,21 @@ class Products extends Component
             'productPrice' => 'required|integer',
             'productOfferPrice' => 'integer',
         ]);
+        $specification = implode(',', $this->productSpecification);
         $product_details = new product_details([
             'product_id'=>$this->selectedCategory,
             'title'=>$this->productTitle,
             'dimension'=>$this->productDimension,
             'description'=>$this->productDescription,
             'care_instruction'=>$this->productCareInstruction,
+            'specification'=>$specification,
             'gender'=>$this->gender,
             'price'=>$this->productPrice,
             'offer_price'=>$this->productOfferPrice,
             'return'=>$this->productReturn,
             'sale'=>$this->productSale,
             'discount'=>$this->productDiscount,
+            'italian'=>$this->productItalian,
         ]);
         $product_created = \App\Models\products::create([
             'product_category_id' => $this->selectedCategory,
@@ -95,4 +99,14 @@ class Products extends Component
         session()->flash('product_deleted', 'Product has been deleted');
     }
 
+    public function addSpecList()
+    {
+        $arr=['specification'=>''];
+        array_push($this->specList, $arr);
+    }
+
+    public function removeSpecList($key)
+    {
+        unset($this->specList[$key]);
+    }
 }

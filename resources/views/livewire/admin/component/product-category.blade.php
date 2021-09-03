@@ -78,8 +78,13 @@
                             <form class="forms-sample" wire:submit.prevent="update">
                                 <div class="form-group">
                                     <label>Category</label>
-                                    <input type="text" class="form-control" placeholder="New Category" wire:model.lazy="editCategory">
+                                    <input type="text" class="form-control" placeholder="Edit Category" wire:model.lazy="editCategory">
                                     @error('editCategory') <p class="text-danger mt-2">{{ $message }}</p> @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label>HSN Code</label>
+                                    <input type="text" class="form-control" placeholder="Edit HSN Code" wire:model.lazy="editHsn">
+                                    @error('editHsn') <p class="text-danger mt-2">{{ $message }}</p> @enderror
                                 </div>
                                 <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
                                 <button class="btn btn-light">Cancel</button>
@@ -99,6 +104,11 @@
                                 <label>Category</label>
                                 <input type="text" class="form-control" placeholder="New Category" wire:model.lazy="newCategory">
                                 @error('newCategory') <p class="text-danger mt-2">{{ $message }}</p> @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>HSN Code</label>
+                                <input type="text" class="form-control" placeholder="new HSN Code" wire:model.lazy="newHsn">
+                                @error('newHsn') <p class="text-danger mt-2">{{ $message }}</p> @enderror
                             </div>
                             <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
                             <button class="btn btn-light">Cancel</button>

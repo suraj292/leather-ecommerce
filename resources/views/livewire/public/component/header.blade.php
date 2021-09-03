@@ -28,7 +28,7 @@
                                                             <div class="col mega-box">
                                                                 <div class="link-section">
                                                                     <div class="menu-title">
-                                                                        <h5>Category</h5>
+                                                                        <h5 class="text-uppercase">Category</h5>
                                                                     </div>
                                                                     <div class="menu-content">
                                                                         <ul>
@@ -47,7 +47,7 @@
                                                             <div class="col mega-box">
                                                                 <div class="link-section">
                                                                     <div class="menu-title">
-                                                                        <h5>Collection</h5>
+                                                                        <h5 class="text-uppercase">Collection</h5>
                                                                     </div>
                                                                     <div class="menu-content">
                                                                         <ul>
@@ -69,91 +69,16 @@
                                                             <div class="col mega-box">
                                                                 <div class="link-section">
                                                                     <div class="menu-title">
-                                                                        <h5>cookie bar</h5>
+                                                                        <h5>GENDER</h5>
                                                                     </div>
                                                                     <div class="menu-content">
                                                                         <ul>
-                                                                            <li><a href="index.html">bottom<i
-                                                                                        class="ms-2 fa fa-bolt icon-trend"
-                                                                                        aria-hidden="true"></i></a>
+                                                                            <li>
+                                                                                <a href="{{ route('products', 'male') }}">Male</a>
                                                                             </li>
-                                                                            <li><a href="fashion-4.html">bottom
-                                                                                    left</a></li>
-                                                                            <li><a href="bicycle.html">bottom
-                                                                                    right</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="menu-title mt-2">
-                                                                        <h5>search</h5>
-                                                                    </div>
-                                                                    <div class="menu-content">
-                                                                        <ul>
-                                                                            <li><a href="marketplace-demo-2.html">ajax
-                                                                                    search<i
-                                                                                        class="ms-2 fa fa-bolt icon-trend"
-                                                                                        aria-hidden="true"></i></a>
+                                                                            <li>
+                                                                                <a href="{{ route('products', 'female') }}">Female</a>
                                                                             </li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col mega-box">
-                                                                <div class="link-section">
-                                                                    <div class="menu-title">
-                                                                        <h5>invoice template</h5>
-                                                                    </div>
-                                                                    <div class="menu-content">
-                                                                        <ul>
-                                                                            <li><a target="_blank"
-                                                                                   href="invoice-1.html">invoice
-                                                                                    1</a></li>
-                                                                            <li><a target="_blank"
-                                                                                   href="invoice-2.html">invoice
-                                                                                    2</a></li>
-                                                                            <li><a target="_blank"
-                                                                                   href="invoice-3.html">invoice
-                                                                                    3</a></li>
-                                                                            <li><a target="_blank"
-                                                                                   href="invoice-4.html">invoice
-                                                                                    4</a></li>
-                                                                            <li><a target="_blank"
-                                                                                   href="invoice-5.html">invoice
-                                                                                    5</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col mega-box">
-                                                                <div class="link-section">
-                                                                    <div class="menu-title">
-                                                                        <h5>email template</h5>
-                                                                    </div>
-                                                                    <div class="menu-content">
-                                                                        <ul>
-                                                                            <li><a target="_blank"
-                                                                                   href="http://themes.pixelstrap.com/multikart/email-template/email-order-success.html">order
-                                                                                    success</a></li>
-                                                                            <li><a target="_blank"
-                                                                                   href="http://themes.pixelstrap.com/multikart/email-template/email-order-success-two.html">order
-                                                                                    success 2</a></li>
-                                                                            <li><a target="_blank"
-                                                                                   href="http://themes.pixelstrap.com/multikart/email-template/email-template.html">email
-                                                                                    template</a></li>
-                                                                            <li><a target="_blank"
-                                                                                   href="http://themes.pixelstrap.com/multikart/email-template/email-template-two.html">email
-                                                                                    template 2</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div class="menu-title mt-2">
-                                                                        <h5>elements</h5>
-                                                                    </div>
-                                                                    <div class="menu-content">
-                                                                        <ul>
-                                                                            <li><a href="elements.html">
-                                                                                    elements page<i
-                                                                                        class="ms-2 fa fa-bolt icon-trend"
-                                                                                        aria-hidden="true"></i>
-                                                                                </a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>

@@ -23,10 +23,22 @@ class Products extends Component
         $this->productCategoryId = product_category::where('product_category', $category)->value('id');
         $this->sub_categories = sub_category::where('product_category_id', $this->productCategoryId)->get();
 
-        $this->products = \App\Models\products::with('product_color_img')
-            ->join('product_details', 'products.id', '=', 'product_details.product_id')
-            ->where('product_category_id', $this->productCategoryId)
-            ->get();
+        if ($category=='male'){
+            $this->products = \App\Models\products::with('product_color_img')
+                ->join('product_details', 'products.id', '=', 'product_details.product_id')
+                ->where('gender', '!=', 'female')
+                ->get();
+        } elseif ($category=='female'){
+            $this->products = \App\Models\products::with('product_color_img')
+                ->join('product_details', 'products.id', '=', 'product_details.product_id')
+                ->where('gender', '!=', 'male')
+                ->get();
+        } else {
+            $this->products = \App\Models\products::with('product_color_img')
+                ->join('product_details', 'products.id', '=', 'product_details.product_id')
+                ->where('product_category_id', $this->productCategoryId)
+                ->get();
+        }
 
     }
     public function updatedSelectFilter($selectFilter)

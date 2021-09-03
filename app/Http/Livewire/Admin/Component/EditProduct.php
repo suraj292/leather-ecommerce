@@ -14,7 +14,7 @@ class EditProduct extends Component
 
     public $editProductId, $product, $images, $selectedColor, $productColorId, $imgDiv, $newImage, $addNewColor, $oldImgStk,
         $editProductTitle, $editProductDimension, $editProductDescription, $editProductCareInstruction, $editProductPrice, $editProductOfferPrice, $editProductReturn,
-        $editProductSale, $editProductDiscount, $editStock;
+        $editProductSale, $editProductDiscount, $editStock, $editGender, $editProductItalian, $specList, $editProductSpecification;
     protected $listeners = ['productColorUpdated'];
     public function render()
     {
@@ -26,6 +26,8 @@ class EditProduct extends Component
         $this->editProductDimension = $this->product->details->dimension;
         $this->editProductDescription = $this->product->details->description;
         $this->editProductCareInstruction = $this->product->details->care_instruction;
+        $this->editProductSpecification = explode(',', $this->product->details->specification);
+        $this->editGender = $this->product->details->gender;
         $this->editProductPrice = $this->product->details->price;
         $this->editProductOfferPrice = $this->product->details->offer_price;
         $this->editProductReturn = $this->product->details->return;
@@ -71,13 +73,17 @@ class EditProduct extends Component
             'dimension'=>$this->editProductDimension,
             'description'=>$this->editProductDescription,
             'care_instruction'=>$this->editProductCareInstruction,
+            'specification'=>implode(',', $this->editProductSpecification),
+            'gender'=>$this->editGender,
             'price'=>$this->editProductPrice,
             'offer_price'=>$this->editProductOfferPrice,
             'return'=>$this->editProductReturn,
             'sale'=>$this->editProductSale,
             'discount'=>$this->editProductDiscount,
+            'italian'=>$this->editProductItalian,
         ]);
         session()->flash('product_detail_updated', 'Product details has been updated');
+//        dd(implode(',', $this->editProductSpecification));
 
     }
 
@@ -146,5 +152,16 @@ class EditProduct extends Component
     public function productColorUpdated($id)
     {
         $this->product = \App\Models\products::with('details', 'product_all_img')->find($id);
+    }
+
+    public function addSpecList()
+    {
+//        $list = explode(',', $this->editProductSpecification);
+        $arr=[];
+        array_push($this->editProductSpecification, $arr);
+    }
+    public function removeSpecList($key)
+    {
+        unset($this->editProductSpecification[$key]);
     }
 }

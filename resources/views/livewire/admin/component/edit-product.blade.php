@@ -2,10 +2,10 @@
     <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
+                <h4 class="card-title">Product Details</h4>
                 @if(session()->has('product_detail_updated'))
                 <p class="alert-success p-2">{{ session('product_detail_updated') }}</p>
-                @endif
-                <h4 class="card-title">Product Details</h4>
+                @else
                 <form class="forms-sample" wire:submit.prevent="editProductDetails">
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Title</label>
@@ -35,11 +35,25 @@
                             @error('editProductCareInstruction') <p class="text-danger mt-2">{{ $message }}</p> @enderror
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">Specification</label>
+                        <div class="col-sm-9">
+                            @for($i=0; $i<count($this->editProductSpecification); $i++)
+                                <div class="input-group" style="margin-bottom: 10px;">
+                                    <input type="text" class="form-control" placeholder="add Specification" wire:model="editProductSpecification.{{$i}}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-sm btn-gradient-danger" type="button" wire:click="removeSpecList({{$i}})">X</button>
+                                    </div>
+                                </div>
+                            @endfor
+                            <button type="button" class="btn btn-gradient-dark btn-rounded btn-fw" wire:click="addSpecList">+ Add Specification</button>
+                        </div>
+                    </div>
                     <div class="row form-group">
                         <label class="col-sm-3 col-form-label">Gender</label>
                         <div class="col-sm-9">
                             <select class="form-control form-control-lg" wire:model.lazy="editGender">
-                                <option selected value="none">None</option>
+                                <option value="common">Common</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                             </select>
@@ -61,28 +75,35 @@
                         </div>
                     </div>
                     <div class="form-group row mb-2">
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="form-check col-sm-9 mx-auto">
                                 <input type="checkbox" class="form-check-input" wire:model.lazy="editProductReturn">
                                 <label class="form-check-label"> Return </label>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="form-check col-sm-9 mx-auto">
                                 <input type="checkbox" class="form-check-input" wire:model.lazy="editProductSale">
                                 <label class="form-check-label"> Sale </label>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <div class="form-check col-sm-9 mx-auto">
                                 <input type="checkbox" class="form-check-input" wire:model.lazy="editProductDiscount">
                                 <label class="form-check-label"> Discount </label>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-check col-sm-9 mx-auto">
+                                <input type="checkbox" class="form-check-input" wire:model.lazy="editProductItalian">
+                                <label class="form-check-label"> Italian </label>
                             </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-gradient-primary mr-2">Update</button>
 {{--                    <button class="btn btn-light" @click="isOpen = !isOpen">Cancel</button>--}}
                 </form>
+                @endif
             </div>
         </div>
     </div>

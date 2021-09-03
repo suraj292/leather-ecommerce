@@ -110,7 +110,7 @@
 
             {{--  2. Add Color name and Image of new Product Detail  --}}
             @if(!is_null($productId))
-            <livewire:admin.component.product-color-img  :productId="$productId"/>
+                <livewire:admin.component.product-color-img  :productId="$productId"/>
             @endif
 
         </div>

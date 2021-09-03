@@ -82,8 +82,14 @@
 {{--                                                    @if($product->product != null)--}}
                                                 <div class="col-xl-3 col-6 col-grid-box">
                                                     <div class="product-box">
+                                                        @if($product->italian == true)
+                                                        <span style="color: whitesmoke; background-image: linear-gradient(to right, red , #ff6767);
+                                                        padding: 1px 7px 1px 7px; border-radius: 1px 5px 0px 0px;"
+                                                        >Italian Leather</span>
+                                                        @else
+                                                            <br>
+                                                        @endif
                                                         <div class="img-wrapper">
-                                                        {{-- asset('storage/product/'.explode(',', $product->product_color_img->images)[0]) --}}
                                                             <div class="lable-block">
                                                                 @if($product->created_at < now()->subDays(30)->toDateTimeString())
                                                                 <span class="lable3">new</span>
