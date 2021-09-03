@@ -2,22 +2,41 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Product Color & Images:</h4>
+
             @if(session()->has('color_img'))
             <p class="alert-success p-2">{{session('color_img')}}</p>
             <button type="submit" class="btn btn-gradient-primary w-100 mb-2" wire:click="add_more_color">+ Add more Color</button>
             @else
+
             <form class="forms-sample" wire:submit.prevent="productColorImg">
                 <!-- select color -->
-                <div class="form-group">
-                    <label for="exampleFormControlSelect2">Select Color</label>
-                    <select class="form-control" id="exampleFormControlSelect2" wire:model.lazy="productColors">
-                        <option selected> Please Select Color </option>
+                <div class="form-group" wire:ignore>
+                    <select class="selectpicker" wire:model.lazy="colorId">
+                        <option selected> Select below </option>
                         @foreach($colors as $color)
-                            <option>{{$color->color}}</option>
+                        <option
+                            data-content=" <img src='{{ asset('storage/color_image/'.$color->color_image ) }}' width='20px'> &nbsp;&nbsp;&nbsp;{{$color->color_name}} "
+                            value="{{ $color->id }}"
+                        ></option>
                         @endforeach
                     </select>
+
                     @error('productColors') <p class="text-danger mt-3">{{ $message }}</p> @enderror
                 </div>
+                <script>
+                    $('.selectpicker').selectpicker();
+                </script>
+
+                <style>
+                    .btn-stock:hover{background: #efefef;}
+                </style>
+                <div class="input-group my-2">
+                    <label class="mr-2">Stock :</label>
+                    <button class="btn btn-stock" type="button" style="border: 1px #0000003b solid; width: 50px;" wire:click="stockDec"><i class="mdi mdi-minus"></i></button>
+                    <input type="text" class="text-center" maxlength="3" value="{{ $stockQuantity }}" style="border: 1px #0000003b solid; width: 100px;">
+                    <button class="btn btn-stock" type="button" style="border: 1px #0000003b solid; width: 50px;" wire:click="stockInc"><i class="mdi mdi-plus"></i></button>
+                </div>
+
                 <!-- end select color -->
                 <div class="row mb-2 pb-2" style="border-bottom: #a0a0a04a 1px solid;">
                     <div class="col-6 d-flex align-items-center">
@@ -105,3 +124,4 @@
         </div>
     </div>
 </div>
+

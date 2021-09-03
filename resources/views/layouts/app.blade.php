@@ -20,9 +20,6 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&amp;display=swap" rel="stylesheet">
 
-    <!-- Icons -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/fontawesome.css')}}">
-
     <!--Slick slider css-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/slick.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/slick-theme.css')}}">
@@ -34,169 +31,28 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/themify-icons.css')}}">
 
     <!-- Bootstrap css -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/bootstrap.css') }}">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/fontawesome.css')}}">--}}
 
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+
+    <!-- Custome css -->
+    <script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
+    @yield('style')
+
     <livewire:styles />
 </head>
 
 <body class="">
 <!-- header start -->
-<header class="header-5" style="z-index: 1;">
-    <div class="mobile-fix-option"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="main-menu">
-                    <div class="menu-left">
-                        <div class="brand-logo">
-                            <a href="{{route('home')}}"> <img src="{{asset('assets/images/icon/logo/f8.png')}}"
-                                                       class="img-fluid blur-up lazyload" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="menu-right pull-right">
-                        <div>
-                            <nav id="main-nav">
-                                <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
-                                <ul id="main-menu" class="sm pixelstrap sm-horizontal">
-                                    <li>
-                                        <div class="mobile-back text-end">Back<i class="fa fa-angle-right ps-2"
-                                                                                 aria-hidden="true"></i></div>
-                                    </li>
-                                    <li><a href="{{route('home')}}">New Arrival</a></li>
-                                    <li><a href="#">SHOP</a>
-                                        <ul>
-                                            <livewire:public.component.shop-dropdown />
-                                        </ul>
-                                    </li>
-                                    <li class="mega" id="hover-cls">
-                                        <a href="#">Leather & Art</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">value combo</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Blogs</a>
-                                    </li>
-
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="top-header">
-                            <ul class="header-dropdown">
-                                <li class="mobile-wishlist"><a href="#"><img
-                                            src="assets/images/jewellery/icon/heart.png" alt=""> </a></li>
-                                <li class="onhover-dropdown mobile-account">
-                                    <img src="assets/images/jewellery/icon/avatar.png" alt="">
-                                    <ul class="onhover-show-div">
-                                        <li>
-                                            <a href="#" data-lng="en">
-                                                Login
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#" data-lng="es">
-                                                Logout
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="icon-nav">
-                                <ul>
-                                    <li class="onhover-div mobile-search">
-                                        <div><img src="assets/images/jewellery/icon/search.png"
-                                                  onclick="openSearch()" class="img-fluid blur-up lazyload" alt="">
-                                            <i class="ti-search" onclick="openSearch()"></i>
-                                        </div>
-                                        <div id="search-overlay" class="search-overlay">
-                                            <div>
-                                                    <span class="closebtn" onclick="closeSearch()"
-                                                          title="Close Overlay">×</span>
-                                                <div class="overlay-content">
-                                                    <div class="container">
-                                                        <div class="row">
-                                                            <div class="col-xl-12">
-                                                                <form>
-                                                                    <div class="form-group">
-                                                                        <input type="text" class="form-control"
-                                                                               id="exampleInputPassword1"
-                                                                               placeholder="Search a Product">
-                                                                    </div>
-                                                                    <button type="submit" class="btn btn-primary"><i
-                                                                            class="fa fa-search"></i></button>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="onhover-div mobile-cart">
-                                        <div><img src="assets/images/jewellery/icon/cart.png"
-                                                  class="img-fluid blur-up lazyload" alt="">
-                                            <i class="ti-shopping-cart"></i>
-                                        </div>
-                                        <ul class="show-div shopping-cart">
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#"><img alt="" class="me-3"
-                                                                     src="assets/images/fashion/product/1.jpg"></a>
-                                                    <div class="media-body">
-                                                        <a href="#">
-                                                            <h4>item name</h4>
-                                                        </a>
-                                                        <h4><span>1 x $ 299.00</span></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="close-circle">
-                                                    <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="media">
-                                                    <a href="#"><img alt="" class="me-3"
-                                                                     src="assets/images/fashion/product/2.jpg"></a>
-                                                    <div class="media-body">
-                                                        <a href="#">
-                                                            <h4>item name</h4>
-                                                        </a>
-                                                        <h4><span>1 x $ 299.00</span></h4>
-                                                    </div>
-                                                </div>
-                                                <div class="close-circle">
-                                                    <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="total">
-                                                    <h5>subtotal : <span>$299.00</span></h5>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="buttons">
-                                                    <a href="cart.html" class="view-cart">view cart</a>
-                                                    <a href="#" class="checkout">checkout</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+<livewire:public.component.header />
 <!-- header end -->
 
-    {{$slot}}
+        {{$slot}}
 
 <!-- footer start -->
 <footer class="footer-light">
@@ -212,18 +68,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <form
-                            action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
-                            class="form-inline subscribe-form auth-form needs-validation" method="post"
-                            id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-                            <div class="form-group mx-sm-3">
-                                <input type="text" class="form-control" name="EMAIL" id="mce-EMAIL"
-                                       placeholder="Enter your email" required="required">
-                            </div>
-                            <button type="submit" class="btn btn-solid" id="mc-submit">subscribe</button>
-                        </form>
-                    </div>
+                    <livewire:public.component.subscribe />
                 </div>
             </section>
         </div>
@@ -236,7 +81,7 @@
                         <h4>about</h4>
                     </div>
                     <div class="footer-contant">
-                        <div class="footer-logo"><img src="assets/images/icon/logo/f8.png" alt=""></div>
+                        <div class="footer-logo"><img src="{{asset('assets/images/icon/logo/f8.png')}}" alt=""></div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                             ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
                         <div class="footer-social">
@@ -314,19 +159,19 @@
                     <div class="payment-card-bottom">
                         <ul>
                             <li>
-                                <a href="#"><img src="assets/images/icon/visa.png" alt=""></a>
+                                <a href="#"><img src="{{asset('assets/images/icon/visa.png')}}" alt=""></a>
                             </li>
                             <li>
-                                <a href="#"><img src="assets/images/icon/mastercard.png" alt=""></a>
+                                <a href="#"><img src="{{asset('assets/images/icon/mastercard.png')}}" alt=""></a>
                             </li>
                             <li>
-                                <a href="#"><img src="assets/images/icon/paypal.png" alt=""></a>
+                                <a href="#"><img src="{{asset('assets/images/icon/paypal.png')}}" alt=""></a>
                             </li>
                             <li>
-                                <a href="#"><img src="assets/images/icon/american-express.png" alt=""></a>
+                                <a href="#"><img src="{{asset('assets/images/icon/american-express.png')}}" alt=""></a>
                             </li>
                             <li>
-                                <a href="#"><img src="assets/images/icon/discover.png" alt=""></a>
+                                <a href="#"><img src="{{asset('assets/images/icon/discover.png')}}" alt=""></a>
                             </li>
                         </ul>
                     </div>
@@ -410,7 +255,7 @@
                         aria-hidden="true">&times;</span></button>
                 <div class="row">
                     <div class="col-lg-6 col-xs-12">
-                        <div class="quick-view-img"><img src="assets/images/pro3/1.jpg" alt=""
+                        <div class="quick-view-img"><img src="{{asset('assets/images/pro3/1.jpg')}}" alt=""
                                                          class="img-fluid blur-up lazyload"></div>
                     </div>
                     <div class="col-lg-6 rtl-text">
@@ -472,7 +317,7 @@
             <div class="setting-body">
                 <div class="setting-title">
                     <div>
-                        <img src="assets/images/icon/logo.png" class="img-fluid" alt="">
+                        <img src="{{asset('assets/images/icon/logo.png')}}" class="img-fluid" alt="">
                         <h3>50+ <span>demos</span> <br> suit for any type of online store.</h3>
                     </div>
                 </div>
@@ -481,7 +326,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="gradient.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/gradient.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/gradient.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="gradient.html" class="demo-text">
@@ -492,7 +337,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="{{route('home')}}" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/fashion.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/fashion.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="{{route('home')}}" class="demo-text">
@@ -503,7 +348,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="fashion-2.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/fashion-2.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/fashion-2.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="fashion-2.html" class="demo-text">
@@ -514,7 +359,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="fashion-3.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/fashion-3.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/fashion-3.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="fashion-3.html" class="demo-text">
@@ -525,7 +370,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="fashion-4.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/fashion-4.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/fashion-4.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="fashion-4.html" class="demo-text">
@@ -536,7 +381,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="fashion-5.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/fashion-5.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/fashion-5.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="fashion-5.html" class="demo-text">
@@ -547,7 +392,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="fashion-6.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/fashion-6.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/fashion-6.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="fashion-6.html" class="demo-text">
@@ -558,7 +403,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="fashion-7.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/fashion-7.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/fashion-7.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="fashion-7.html" class="demo-text">
@@ -569,7 +414,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="furniture.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/furniture.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/furniture.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="furniture.html" class="demo-text">
@@ -580,7 +425,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="furniture-2.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/furniture-2.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/furniture-2.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="furniture-2.html" class="demo-text">
@@ -591,7 +436,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="furniture-3.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/furniture-dark.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/furniture-dark.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="furniture-3.html" class="demo-text">
@@ -602,7 +447,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="electronic-1.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/electronics.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/electronics.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="electronic-1.html" class="demo-text">
@@ -613,7 +458,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="electronic-2.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/electronics-2.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/electronics-2.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="electronic-2.html" class="demo-text">
@@ -624,7 +469,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="electronic-3.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/electronics-3.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/electronics-3.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="electronic-3.html" class="demo-text">
@@ -635,7 +480,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="marketplace-demo.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/marketplace.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/marketplace.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="marketplace-demo.html" class="demo-text">
@@ -646,7 +491,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="marketplace-demo-2.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/marketplace-2.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/marketplace-2.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="marketplace-demo-2.html" class="demo-text">
@@ -657,7 +502,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="marketplace-demo-3.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/marketplace-3.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/marketplace-3.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="marketplace-demo-3.html" class="demo-text">
@@ -668,7 +513,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="marketplace-demo-4.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/marketplace-4.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/marketplace-4.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="marketplace-demo-4.html" class="demo-text">
@@ -679,7 +524,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="vegetables.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/vegetables.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/vegetables.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="vegetables.html" class="demo-text">
@@ -690,7 +535,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="vegetables-2.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/vegetables-2.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/vegetables-2.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="vegetables-2.html" class="demo-text">
@@ -701,7 +546,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="vegetables-3.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/vegetables-3.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/vegetables-3.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="vegetables-3.html" class="demo-text">
@@ -712,7 +557,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="jewellery.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/jewellery.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/jewellery.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="jewellery.html" class="demo-text">
@@ -723,7 +568,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="jewellery-2.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/jewellery-2.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/jewellery-2.jp')}}g"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="jewellery-2.html" class="demo-text">
@@ -734,7 +579,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="jewellery-3.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/jewellery-3.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/jewellery-3.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="jewellery-3.html" class="demo-text">
@@ -745,7 +590,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="bags.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/bag.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/bag.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="bags.html" class="demo-text">
@@ -756,7 +601,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="watch.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/watch.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/watch.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="watch.html" class="demo-text">
@@ -767,7 +612,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="medical.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/medical.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/medical.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="medical.html" class="demo-text">
@@ -778,7 +623,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="perfume.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/perfume.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/perfume.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="perfume.html" class="demo-text">
@@ -789,7 +634,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="yoga.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/yoga.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/yoga.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="yoga.html" class="demo-text">
@@ -800,7 +645,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="christmas.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/christmas.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/christmas.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="christmas.html" class="demo-text">
@@ -811,7 +656,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="bicycle.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/bicycle.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/bicycle.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="bicycle.html" class="demo-text">
@@ -822,7 +667,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="marijuana.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/marijuana.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/marijuana.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="marijuana.html" class="demo-text">
@@ -833,7 +678,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="gym-product.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/gym.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/gym.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="gym-product.html" class="demo-text">
@@ -842,9 +687,9 @@
                             </div>
                         </div>
                         <div class="col-md-4 col-6 text-center demo-effects">
-                            <div class="set-position">
+                            <div class="set-position">{{asset('')}}
                                 <a href="tools.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/tools.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/tools.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="tools.html" class="demo-text">
@@ -855,7 +700,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="shoes.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/shoes.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/shoes.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="shoes.html" class="demo-text">
@@ -866,7 +711,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="books.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/books.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/books.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="books.html" class="demo-text">
@@ -877,7 +722,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="kids.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/kids.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/kids.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="kids.html" class="demo-text">
@@ -888,7 +733,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="game.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/game.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/game.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="game.html" class="demo-text">
@@ -899,7 +744,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="beauty.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/beauty.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/beauty.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="beauty.html" class="demo-text">
@@ -910,7 +755,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="left_sidebar-demo.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/left-sidebar.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/left-sidebar.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="left_sidebar-demo.html" class="demo-text">
@@ -921,7 +766,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="video-slider.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/video-slider.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/video-slider.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="video-slider.html" class="demo-text">
@@ -932,7 +777,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="metro.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/metro.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/metro.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="metro.html" class="demo-text">
@@ -943,7 +788,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="goggles.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/goggles.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/goggles.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="goggles.html" class="demo-text">
@@ -954,7 +799,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="flower.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/flower.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/flower.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="flower.html" class="demo-text">
@@ -965,7 +810,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="light.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/light.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/light.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="light.html" class="demo-text">
@@ -976,7 +821,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="nursery.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/nursery.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/nursery.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="nursery.html" class="demo-text">
@@ -987,7 +832,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="pets.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/pets.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/pets.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="pets.html" class="demo-text">
@@ -998,7 +843,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="video.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/video.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/video.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="video.html" class="demo-text">
@@ -1009,7 +854,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="lookbook-demo.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/lookbook.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/lookbook.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="lookbook-demo.html" class="demo-text">
@@ -1020,7 +865,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="full-page.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/full-page.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/full-page.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="full-page.html" class="demo-text">
@@ -1031,7 +876,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="instagram-shop.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/instagram.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/instagram.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="instagram-shop.html" class="demo-text">
@@ -1042,7 +887,7 @@
                         <div class="col-md-4 col-6 text-center demo-effects">
                             <div class="set-position">
                                 <a href="parallax.html" class="layout-container">
-                                    <img src="assets/images/landing-page/demo/parallax.jpg"
+                                    <img src="{{asset('assets/images/landing-page/demo/parallax.jpg')}}"
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="parallax.html" class="demo-text">
@@ -1075,7 +920,7 @@
                                 <div class="media">
                                     <a href="#">
                                         <img class="img-fluid blur-up lazyload pro-img"
-                                             src="assets/images/fashion/product/43.jpg" alt="">
+                                             src="{{asset('assets/images/fashion/product/43.jpg')}}" alt="">
                                     </a>
                                     <div class="media-body align-self-center text-center">
                                         <a href="#">
@@ -1092,7 +937,7 @@
                                         </div>
 
                                         <div class="upsell_payment">
-                                            <img src="assets/images/payment_cart.png"
+                                            <img src="{{asset('assets/images/payment_cart.png')}}"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </div>
                                     </div>
@@ -1106,7 +951,7 @@
                                             <div class="img-wrapper">
                                                 <div class="front">
                                                     <a href="#">
-                                                        <img src="assets/images/fashion/product/1.jpg"
+                                                        <img src="{{asset('assets/images/fashion/product/1.jpg')}}"
                                                              class="img-fluid blur-up lazyload mb-1"
                                                              alt="cotton top">
                                                     </a>
@@ -1121,7 +966,7 @@
                                             <div class="img-wrapper">
                                                 <div class="front">
                                                     <a href="#">
-                                                        <img src="assets/images/fashion/product/34.jpg"
+                                                        <img src="{{asset('assets/images/fashion/product/34.jpg')}}"
                                                              class="img-fluid blur-up lazyload mb-1"
                                                              alt="cotton top">
                                                     </a>
@@ -1136,7 +981,7 @@
                                             <div class="img-wrapper">
                                                 <div class="front">
                                                     <a href="#">
-                                                        <img src="assets/images/fashion/product/13.jpg"
+                                                        <img src="{{asset('assets/images/fashion/product/13.jpg')}}"
                                                              class="img-fluid blur-up lazyload mb-1"
                                                              alt="cotton top">
                                                     </a>
@@ -1151,7 +996,7 @@
                                             <div class="img-wrapper">
                                                 <div class="front">
                                                     <a href="#">
-                                                        <img src="assets/images/fashion/product/19.jpg"
+                                                        <img src="{{asset('assets/images/fashion/product/19.jpg')}}"
                                                              class="img-fluid blur-up lazyload mb-1"
                                                              alt="cotton top">
                                                     </a>
@@ -1183,7 +1028,7 @@
 
 
 <!-- latest jquery-->
-<script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
+
 
 <!-- menu js-->
 <script src="{{asset('assets/js/menu.js')}}"></script>
@@ -1233,6 +1078,7 @@
         arrows: false,
     });
 </script>
+@yield('script')
 <livewire:scripts />
 </body>
 </html>

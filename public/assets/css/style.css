@@ -3868,7 +3868,7 @@ button.btn.btn-solid:active, button.btn.btn-outline:active {
     right: 30px; }
 
 /*=====================
-    Demo CSS 
+    Demo CSS
 ==========================*/
 .full-scroll-menu {
   position: fixed;
@@ -9088,7 +9088,7 @@ header.stickycls {
             transform: translateX(-50%); }
   .pixelstrap a .sub-arrow::before {
     content: "\f107";
-    font-family: 'Font Awesome\ 5 Free';
+    font-family: 'FontAwesome';
     position: absolute; }
   .pixelstrap ul {
     border: none;
@@ -9123,7 +9123,7 @@ header.stickycls {
           transition: 0.5s ease; }
       .pixelstrap ul a .sub-arrow:before {
         content: "\f105";
-        font-family: 'Font Awesome\ 5 Free';
+        font-family: 'FontAwesome';
         position: absolute; }
     .pixelstrap ul li {
       border: 0; }
@@ -20748,7 +20748,7 @@ body.dark {
     text-align: center;
     margin: 20px 0 10px 0; }
     .product-right h2 {
-      margin-top: 0px; 
+      margin-top: 0px;
     }
     .product-right .rating-section {
       -webkit-box-pack: center;
@@ -26018,3 +26018,38 @@ body.rtl .account-setting {
 @media (max-width: 360px) {
   .rtl .timer span .padding-l {
     padding-right: 10px; } }
+
+.hidden-hight-div{
+    height: 107px;
+}
+@media only screen and (max-width: 600px) {
+    .hidden-hight-div{
+        height: 80px;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .hidden-hight-div{
+        height: 60px;
+    }
+}
+.mlm:hover{
+    background-color: rgba(238, 238, 238, 0.89);
+    cursor: pointer;
+}
+.hr-sect {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.35);
+    margin: 8px 0px;
+}
+.hr-sect:before,
+.hr-sect:after {
+    content: "";
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.35);
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 8px;
+}

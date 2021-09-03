@@ -10,7 +10,7 @@ class product_category extends Model
     use HasFactory;
     protected $table = "product_category";
     public $timestamps = false;
-    protected $fillable = ['product_category'];
+    protected $fillable = ['product_category', 'hsn'];
 
     public function sub_category(){
         return $this->hasMany(sub_category::class, 'product_category_id', 'id');

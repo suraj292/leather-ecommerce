@@ -10,7 +10,7 @@ use Livewire\WithFileUploads;
 class CollectionBanner extends Component
 {
     use WithFileUploads;
-    public $banners, $newItem, $newOffer, $newBgColor, $newImg, $newBannerLink,
+    public $banners, $newItem, $newOffer, $newBgColor="#650101", $newImg, $newBannerLink,
             $getBannerId, $editItem, $editOffer, $editBgColor, $editImg, $editBannerLink;
     public function render()
     {

@@ -18,8 +18,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'avatar',
         'email',
+        'mobile',
+        'social_network',
         'password',
+        'email_verified_at',
+        'mobile_verified_at',
     ];
 
     /**
@@ -40,4 +45,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function user_verification(){
+        return $this->hasOne(user_verification::class, 'user_id', 'id');
+    }
 }

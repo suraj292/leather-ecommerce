@@ -20,11 +20,14 @@ class CreateProductDetailsTable extends Migration
             $table->string('dimension')->nullable();
             $table->char('description')->nullable();
             $table->char('care_instruction')->nullable();
+            $table->longText('specification')->nullable();
             $table->string('price')->nullable();
             $table->string('offer_price')->nullable();
+            $table->string('gender')->nullable();
             $table->boolean('return')->nullable();
             $table->boolean('sale')->nullable();
             $table->boolean('discount')->nullable();
+            $table->boolean('italian')->nullable();
         });
     }
 
