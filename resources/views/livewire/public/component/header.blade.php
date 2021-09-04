@@ -253,7 +253,7 @@
                                                 </li>
                                                 <li>
                                                     <div class="buttons">
-                                                        <a href="cart.html" class="view-cart">view cart</a>
+                                                        <a href="{{ route('cart') }}" class="view-cart">view cart</a>
                                                         <a href="#" class="checkout">checkout</a>
                                                     </div>
                                                 </li>

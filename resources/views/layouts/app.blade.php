@@ -330,7 +330,7 @@
                                          class="img-fluid bg-img bg-top" alt="">
                                 </a>
                                 <a href="gradient.html" class="demo-text">
-                                    <h4>gradient<h4>
+                                    <h4>gradient</h4>
                                 </a>
                             </div>
                         </div>

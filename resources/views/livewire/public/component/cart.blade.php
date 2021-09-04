@@ -93,9 +93,36 @@
                             </td>
                             <td>
                                 <div class="qty-box">
+{{--                                    <div class="input-group">--}}
+{{--                                        <input type="number" name="quantity" class="form-control input-number"--}}
+{{--                                               value="{{ $cartProduct['quantity'] }}">--}}
+{{--                                    </div>--}}
                                     <div class="input-group">
-                                        <input type="number" name="quantity" class="form-control input-number"
-                                               value="{{ $cartProduct['quantity'] }}">
+                                        <span class="input-group-prepend">
+                                            <button type="button" class="btn"
+                                                @auth()
+                                                    wire:click="decrement({{ $cartProduct['product_id'] }})"
+                                                @endauth
+                                                @guest()
+                                                    wire:click="decrement({{ $key }})"
+                                                @endguest
+                                            >
+                                                <i class="ti-minus"></i>
+                                            </button>
+                                        </span>
+                                            <input type="text" class="form-control" value="{{$cartProduct['quantity']}}">
+                                        <span class="input-group-prepend">
+                                            <button type="button" class="btn"
+                                                    @auth()
+                                                    wire:click="increment({{ $cartProduct['product_id'] }})"
+                                                    @endauth
+                                                    @guest()
+                                                    wire:click="increment({{ $key }})"
+                                                    @endguest
+                                            >
+                                                <i class="ti-plus"></i>
+                                            </button>
+                                        </span>
                                     </div>
                                 </div>
                             </td>

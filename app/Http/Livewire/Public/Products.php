@@ -39,7 +39,7 @@ class Products extends Component
                 ->where('product_category_id', $this->productCategoryId)
                 ->get();
         }
-
+//        $this->selectFilter
     }
     public function updatedSelectFilter($selectFilter)
     {

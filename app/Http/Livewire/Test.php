@@ -70,7 +70,9 @@ class Test extends Component
 //                }else{return;}
 //            }
 //        }
-//        dd($this->test);
+        $x = product_details::all();
+        $y = $x->where('return', '=', false);
+        dd($y);
     }
 
     public function increase()

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 //      PUBLIC
-Route::get('/', \App\Http\Livewire\Public\Home::class)->name('home');
+Route::get('/', App\Http\Livewire\Public\Home::class)->name('home');
 Route::get('products/{category?}', App\Http\Livewire\Public\Products::class)->name('products');
 Route::get('product/{slug}', App\Http\Livewire\Public\ProductDetail::class)->name('product_details');
 Route::get('register', App\Http\Livewire\Public\Register::class)->middleware('guest')->name('register');

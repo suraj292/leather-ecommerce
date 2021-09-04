@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Component;
 
 use App\Models\admin_login;
 use App\Models\product_category;
+use JetBrains\PhpStorm\ArrayShape;
 use Livewire\Component;
 
 class ProductCategory extends Component
