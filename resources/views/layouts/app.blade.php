@@ -40,8 +40,9 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
 
-    <!-- Custome css -->
+    <!--  jquery  -->
     <script src="{{asset('assets/js/jquery-3.3.1.min.js')}}"></script>
+    <!-- Custome css -->
     @yield('style')
 
     <livewire:styles />

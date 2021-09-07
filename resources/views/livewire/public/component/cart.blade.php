@@ -26,15 +26,15 @@
     <!--section start-->
     <section class="cart-section section-b-space">
         <div class="container">
+            @if(!is_null($cart))
             <div class="row">
-                @if(!is_null($cart))
                 <div class="col-sm-12">
                     <div class="cart_counter">
                         <div class="countdownholder">
 {{--                            Your cart will be expired in<span id="timer"></span> minutes!--}}
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, incidunt?
                         </div>
-                        <a href="checkout.html" class="cart_checkout btn btn-solid btn-xs">check out</a>
+                        <a href="{{ route('checkout') }}" class="cart_checkout btn btn-solid btn-xs">check out</a>
                     </div>
                 </div>
                 <div class="col-sm-12 table-responsive-xs">
@@ -70,7 +70,7 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <h2 class="td-color">$ {{ $cartProduct['price'] }}</h2>
+                                        <h2 class="td-color">&#8377; {{ $cartProduct['price'] }}</h2>
                                     </div>
                                     <div class="col">
                                         <h2 class="td-color">
@@ -89,7 +89,7 @@
                                 </div>
                             </td>
                             <td>
-                                <h2>$ {{ $cartProduct['price'] }}</h2>
+                                <h2>&#8377; {{ $cartProduct['price'] }}</h2>
                             </td>
                             <td>
                                 <div class="qty-box">
@@ -128,18 +128,18 @@
                             </td>
                             <td>
                                 @auth()
-                                    <a class="icon" wire:click="dProductCart({{ $cartProduct['product_id'] }})">
+                                    <a class="icon" role="button" wire:click="dProductCart({{ $cartProduct['product_id'] }})">
                                         <i class="ti-trash"></i>
                                     </a>
                                 @endauth
                                 @guest()
-                                    <a class="icon" wire:click="dProductCart({{ $key }})">
+                                    <a class="icon" role="button" wire:click="dProductCart({{ $key }})">
                                         <i class="ti-trash"></i>
                                     </a>
                                 @endguest
                             </td>
                             <td>
-                                <h2 class="td-color">${{$cartProduct['quantity'] * $cartProduct['price'] }}</h2>
+                                <h2 class="td-color">&#8377;{{$cartProduct['quantity'] * $cartProduct['price'] }}</h2>
                                 <span style="display: none;">
                                     {{ $subtotal += $cartProduct['quantity'] * $cartProduct['price'] }}
                                 </span>
@@ -155,19 +155,32 @@
                             <tr>
                                 <td>total price :</td>
                                 <td>
-                                    <h2>${{ $subtotal }}</h2>
+                                    <h2>&#8377;{{ $subtotal }}</h2>
                                 </td>
                             </tr>
                             </tfoot>
                         </table>
                     </div>
                 </div>
-                @endif
+
             </div>
             <div class="row cart-buttons">
                 <div class="col-6"><a href="#" class="btn btn-solid">continue shopping</a></div>
-                <div class="col-6"><a href="#" class="btn btn-solid">check out</a></div>
+                <div class="col-6"><a href="{{ route('checkout') }}" class="btn btn-solid">check out</a></div>
             </div>
+            @else
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="cart_counter">
+                            <div class="countdownholder">
+                                {{--                            Your cart will be expired in<span id="timer"></span> minutes!--}}
+                                Cart is Empty add Product to Checkout.
+                            </div>
+                            <a href="checkout.html" class="cart_checkout btn btn-solid btn-xs">Show now</a>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </section>
     <!--section end-->

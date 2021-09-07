@@ -222,7 +222,7 @@
                                                                 <a href="#"> <h4>{{ $cartProduct['title'] }}</h4> </a>
                                                                 <h4>
                                                                     <span>
-                                                                        {{ $cartProduct['quantity'] }}  x $
+                                                                        {{ $cartProduct['quantity'] }}  x &#8377;
                                                                         {{$cartProduct['quantity'] * $cartProduct['price'] }}
                                                                     </span>
                                                                     <span style="display: none;">
@@ -248,13 +248,13 @@
                                                 <!-- Cart subtotal -->
                                                 <li>
                                                     <div class="total">
-                                                        <h5>subtotal : <span>{{ $subtotal }}</span></h5>
+                                                        <h5>subtotal : <span>&#8377;{{ $subtotal }}</span></h5>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="buttons">
                                                         <a href="{{ route('cart') }}" class="view-cart">view cart</a>
-                                                        <a href="#" class="checkout">checkout</a>
+                                                        <a href="{{ route('checkout') }}" class="checkout">checkout</a>
                                                     </div>
                                                 </li>
                                             </ul>

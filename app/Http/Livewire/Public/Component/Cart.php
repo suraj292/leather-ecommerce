@@ -57,6 +57,7 @@ class Cart extends Component
             session()->put('cart', $cartProduct);
             $this->cart = Session::get('cart');
         }
+        $this->emit('cartRemoved');//cartRemoved is used to update cart without parameters
     }
     public function decrement($key)
     {
@@ -75,5 +76,6 @@ class Cart extends Component
             session()->put('cart', $cartProduct);
             $this->cart = Session::get('cart');
         }
+        $this->emit('cartRemoved');//cartRemoved is used to update cart without parameters
     }
 }

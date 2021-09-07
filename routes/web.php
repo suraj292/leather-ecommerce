@@ -11,6 +11,7 @@ Route::get('verification/{user}/{code}', App\Http\Livewire\Public\Component\Emai
 Route::get('sendEmailVerification', App\Http\Livewire\Public\Component\ResendEmailLink::class)->name('send_email_verify');
 Route::get('collection/{slug?}', App\Http\Livewire\Public\Collection::class)->name('collection');
 Route::get('cart', App\Http\Livewire\Public\Component\Cart::class)->name('cart');
+Route::get('checkout', App\Http\Livewire\Public\Component\Checkout::class)->name('checkout');
 
 Route::get('login', App\Http\Livewire\Public\Login::class)->name('login');
 
